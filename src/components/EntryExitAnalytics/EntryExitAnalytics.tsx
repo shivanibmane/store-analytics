@@ -11,12 +11,12 @@ import EntryExitDountChart from "./EntryExitDountChart";
 const EntryExitAnalytics = () => {
   return (
     <div className="w-full">
-      <Header title="Entry & Exit EntryExitAnalytics" />
+      <Header title="Entry & Exit Analytics" />
       <div className="px-4 py-2 ">
         <div className="flex gap-1 text-[#F92609] items-center text-sm ">
           <p>Menu</p>
           <ChevronRight className="w-4" />
-          <p>EntryExitAnalytics</p>
+          <p>Entry/Exit Analytics</p>
         </div>
         <div className="grid grid-cols-1 sm:flex gap-3 items-center py-3">
           <DatePicker title="Start Date" />
@@ -40,7 +40,6 @@ const EntryExitAnalytics = () => {
           <EntryExitTreandLineChart />
         </div>
       </div>
-
     </div>
   )
 }
