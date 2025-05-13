@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom"
 import Home from "./components/Home"
 import CityMap from "./components/Map/CityMap"
-import Analytics from "./components/Analytics/Analytics"
 import UserManagement from "./components/UserManagement/UserManagement"
+import EntryExitAnalytics from "./components/EntryExitAnalytics/EntryExitAnalytics"
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} >
           <Route index element={<CityMap />} />
-          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/entry-exit-analytics" element={<EntryExitAnalytics />} />
           <Route path="/user-management" element={<UserManagement />} />
         </Route>
       </Routes>

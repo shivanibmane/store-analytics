@@ -19,7 +19,7 @@ function Calendar({
         months: "flex flex-col sm:flex-row gap-2",
         month: "flex flex-col gap-4",
         caption: "flex justify-center pt-1 relative items-center w-full",
-        caption_label: "text-sm font-medium text-[#F92609]",
+        caption_label: "text-sm font-medium",
         nav: "flex items-center gap-1",
         nav_button: cn(
           buttonVariants({ variant: "outline" }),
@@ -47,7 +47,7 @@ function Calendar({
         day_range_end:
           "day-range-end aria-selected:bg-primary aria-selected:text-primary-foreground",
         day_selected:
-          "bg-[#F92609] text-white hover:bg-primary hover:text-primary-foreground focus:bg-[#F92609] focus:text-accent",
+          "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
         day_today: "bg-accent text-accent-foreground",
         day_outside:
           "day-outside text-muted-foreground aria-selected:text-muted-foreground",
@@ -59,10 +59,10 @@ function Calendar({
       }}
       components={{
         IconLeft: ({ className, ...props }) => (
-          <ChevronLeft className={cn("size-4 text-[#F92609]", className)} {...props} />
+          <ChevronLeft className={cn("size-4", className)} {...props} />
         ),
         IconRight: ({ className, ...props }) => (
-          <ChevronRight className={cn("size-4 text-[#F92609]", className)} {...props} />
+          <ChevronRight className={cn("size-4", className)} {...props} />
         ),
       }}
       {...props}

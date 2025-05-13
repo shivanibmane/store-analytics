@@ -6,7 +6,7 @@ import facegenie_logo from "../assets/facegenie_logo.png"
 import resoluteai_logo from "../assets/resoluteai_logo.webp"
 import { Link } from "react-router-dom";
 
-const sidebarMenu = [{ id: 1, name: "City Map", icon: <LuMapPinned />, path: "/" }, { id: 2, name: "Analytics", icon: <IoAnalyticsOutline />, path: "/analytics" }, { id: 3, name: "User Management", icon: <LuUsers />, path: "/user-management" }]
+const sidebarMenu = [{ id: 1, name: "City Map", icon: <LuMapPinned />, path: "/" }, { id: 2, name: "Entry/Exit Analytics", icon: <IoAnalyticsOutline />, path: "/entry-exit-analytics" }, { id: 3, name: "User Management", icon: <LuUsers />, path: "/user-management" }]
 
 
 const AppSidebar = () => {

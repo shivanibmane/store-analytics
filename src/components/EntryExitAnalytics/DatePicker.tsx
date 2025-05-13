@@ -25,11 +25,9 @@ const DatePicker = ({ title }: any) => {
             !date && "text-[#F92609]",
           )}
         >
-
           {date ? format(date, "PPP") : <span>{title}</span>}
           <ChevronDown />
         </Button>
-
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
         <Calendar
@@ -42,5 +40,4 @@ const DatePicker = ({ title }: any) => {
     </Popover>
   )
 }
-
 export default DatePicker
