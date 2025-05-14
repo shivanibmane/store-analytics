@@ -33,7 +33,7 @@ const chartConfig = {
 const EntryExitDountChart = ({ totalEntryExit }: any) => {
   console.log("totalEntryExit", totalEntryExit)
   const chartData = [
-    { status: "entry", value: totalEntryExit.total_entry, fill: "#F92609" },
+    { status: "entry", value: totalEntryExit?.total_entry, fill: "#F92609" },
     { status: "exit", value: totalEntryExit?.total_exit, fill: "#FFD14F" },
   ];
 
