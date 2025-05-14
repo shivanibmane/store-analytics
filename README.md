@@ -9,6 +9,7 @@ https://store-analytics-nu.vercel.app
 ### 1️⃣ Clone the Repository
 git clone https://github.com/shivanibmane/store-analytics.git
 
+Navigate to the `store-analytics` directory and run the following commands:
 ```
 npm install
 npm run dev
