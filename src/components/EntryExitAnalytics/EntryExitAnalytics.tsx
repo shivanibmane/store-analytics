@@ -12,7 +12,6 @@ const EntryExitAnalytics = () => {
   const [peakData, setPeakData]: any = useState(null);
   const [trendData, setTrendData]: any = useState([]);
   const [totalEntryExit, setTotalEntryExit]: any = useState(null);
-  const FIVE_MINUTES = 5 * 60 * 1000;
 
   useEffect(() => {
     const fetchAllData = async () => {
@@ -27,29 +26,12 @@ const EntryExitAnalytics = () => {
         const peak = await peakRes.json();
         setTotalEntryExit(totalData);
         setTrendData(trend);
-        console.log(trend);
         setPeakData(peak);
       } catch (err) {
         console.error("Failed to fetch:", err);
       }
     };
     fetchAllData();
-  }, []);
-
-  // Fetch trend data every 5 minutes
-  useEffect(() => {
-    const interval = setInterval(async () => {
-      try {
-        const trendRes = await fetch("http://127.0.0.1:8000/entry_exit_trend");
-        const trend = await trendRes.json();
-        setTrendData(trend);
-        console.log("Trend data updated");
-      } catch (err) {
-        console.error("Failed to fetch trend data:", err);
-      }
-    }, FIVE_MINUTES);
-
-    return () => clearInterval(interval); // cleanup
   }, []);
 
   return (
