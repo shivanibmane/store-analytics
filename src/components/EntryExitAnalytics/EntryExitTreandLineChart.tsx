@@ -16,11 +16,11 @@ import {
 const chartConfig = {
   entry: {
     label: "Entry",
-    color: "#F92609",
+    color: "#FFD14F ",
   },
   exit: {
     label: "Exit",
-    color: "#FFD14F",
+    color: "#F92609",
   },
 } satisfies ChartConfig;
 const EntryExitTreandLineChart =
@@ -47,17 +47,17 @@ const EntryExitTreandLineChart =
               <Line
                 dataKey="entry"
                 type="natural"
-                stroke="#F92609"
+                stroke="#FFD14F"
                 strokeWidth={2}
-                dot={{ fill: "#F92609" }}
+                dot={{ fill: "#FFD14F" }}
                 activeDot={{ r: 5 }}
               />
               <Line
                 dataKey="exit"
                 type="natural"
-                stroke="#FFD14F"
+                stroke="#F92609"
                 strokeWidth={2}
-                dot={{ fill: "#FFD14F" }}
+                dot={{ fill: "#F92609" }}
                 activeDot={{ r: 5 }}
               />
             </LineChart>

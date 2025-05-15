@@ -22,19 +22,18 @@ const chartConfig = {
   },
   entry: {
     label: "Entry",
-    color: "#F92609",
+    color: "#FFD14F",
   },
   exit: {
     label: "Exit",
-    color: "#FFD14F",
+    color: "#F92609",
   },
 } satisfies ChartConfig
 
 const EntryExitDountChart = ({ totalEntryExit }: any) => {
-  console.log("totalEntryExit", totalEntryExit)
   const chartData = [
-    { status: "entry", value: totalEntryExit?.total_entry, fill: "#F92609" },
-    { status: "exit", value: totalEntryExit?.total_exit, fill: "#FFD14F" },
+    { status: "entry", value: totalEntryExit?.total_entry, fill: "#FFD14F" },
+    { status: "exit", value: totalEntryExit?.total_exit, fill: "#F92609" },
   ];
 
   return (
