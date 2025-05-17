@@ -4,7 +4,7 @@ import avatar_img from "../assets/profile-pic.jpg"
 
 const Header = ({ title }: any) => {
   return (
-    <div className="border-b-2 border-[#F92609] pb-2" >
+    <div className="border-b-2 border-[#F92609] pb-2 w-full" >
       <SidebarTrigger className="text-[#F92609]" />
       <div className="flex flex-col-reverse gap-1 sm:flex sm:flex-row  justify-between items-center px-2 sm:px-4 w-full ">
         <h1 className="sm:block sm:text-1xl xl:text-2xl font-semibold">{title}</h1>
