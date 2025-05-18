@@ -14,10 +14,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-const chartData = [
-  { status: "entry", value: 275, fill: "#F92609" },
-  { status: "exit", value: 150, fill: "#FFD14F" },
-];
+
 
 const chartConfig = {
   status: {
@@ -25,15 +22,19 @@ const chartConfig = {
   },
   entry: {
     label: "Entry",
-    color: "#F92609",
+    color: "#FFD14F",
   },
   exit: {
     label: "Exit",
-    color: "#FFD14F",
+    color: "#F92609",
   },
 } satisfies ChartConfig
 
-const EntryExitDountChart = () => {
+const EntryExitDountChart = ({ totalEntryExit }: any) => {
+  const chartData = [
+    { status: "entry", value: totalEntryExit?.total_entry, fill: "#FFD14F" },
+    { status: "exit", value: totalEntryExit?.total_exit, fill: "#F92609" },
+  ];
 
   return (
     <Card className="w-full max-w-full p-2 border-[#F92609]">

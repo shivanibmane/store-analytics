@@ -9,20 +9,29 @@ import EntryExitDetailCard from "./EntryExitDetailCard";
 import EntryExitDountChart from "./EntryExitDountChart";
 
 const EntryExitAnalytics = () => {
-  const [peakData, setPeakData] = useState({
-    peak_hour: "",
-    peak_entry: 0,
-    peak_exit: 0
-  });
+  const [peakData, setPeakData]: any = useState(null);
+  const [trendData, setTrendData]: any = useState([]);
+  const [totalEntryExit, setTotalEntryExit]: any = useState(null);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/peak_entry_exit")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Peak Data:", data);
-        setPeakData(data);
-      })
-      .catch((err) => console.error("Failed to fetch peak entry/exit data:", err));
+    const fetchAllData = async () => {
+      try {
+        const [totalRes, trendRes, peakRes] = await Promise.all([
+          fetch("http://127.0.0.1:8000/total_entry_exit"),
+          fetch("http://127.0.0.1:8000/entry_exit_trend"),
+          fetch("http://127.0.0.1:8000/peak_entry_exit"),
+        ]);
+        const totalData = await totalRes.json();
+        const trend = await trendRes.json();
+        const peak = await peakRes.json();
+        setTotalEntryExit(totalData);
+        setTrendData(trend);
+        setPeakData(peak);
+      } catch (err) {
+        console.error("Failed to fetch:", err);
+      }
+    };
+    fetchAllData();
   }, []);
 
   return (
@@ -46,20 +55,15 @@ const EntryExitAnalytics = () => {
           <Button variant="secondary"><BiMenuAltLeft />Operator</Button>
           <Button variant="secondary"><BiMenuAltLeft />Turn Around Time</Button>
         </div>
-
-        <div className="grid grid-cols-1 gap-3 items-center mt-4 mx-auto">
-          <div className="grid grid-col-1 sm:grid-col-1 xl:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1  gap-3 items-center mt-4 mx-auto ">
+          <div className="grid grid-col-1 sm:grid-col-1 xl:grid-cols-2  gap-3 ">
             <div className="flex flex-col sm:flex-row justify-center lg:flex-row gap-3">
-              <EntryExitDetailCard title="Peak Hours" value={peakData.peak_hour || "N/A"} />
-              <EntryExitDetailCard title="Peak Entry" value={peakData.peak_entry} />
-              <EntryExitDetailCard title="Peak Exit" value={peakData.peak_exit} />
-            </div>
-
-            <EntryExitDountChart
-            />
+              <EntryExitDetailCard title="Peak Hours" value={peakData?.peak_hour} />
+              <EntryExitDetailCard title="Peak Entry" value={peakData?.peak_entry} />
+              <EntryExitDetailCard title="Peak Exit" value={peakData?.peak_exit} /></div>
+            <EntryExitDountChart totalEntryExit={totalEntryExit} />
           </div>
-
-          <EntryExitTreandLineChart />
+          <EntryExitTreandLineChart trendData={trendData} />
         </div>
       </div>
     </div>

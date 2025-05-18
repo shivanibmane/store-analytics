@@ -4,6 +4,7 @@ import CityMap from "./components/Map/CityMap"
 import UserManagement from "./components/UserManagement/UserManagement"
 import EntryExitAnalytics from "./components/EntryExitAnalytics/EntryExitAnalytics"
 import UnavailableEmp_cam from "./components/EmployeCameras/UnavailableEmp_cam"
+import IntrusionAnalysis from "./components/IntrusionAnalysis/IntrusionAnalysis"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/entry-exit-analytics" element={<EntryExitAnalytics />} />
           <Route path="/user-management" element={<UserManagement />} />
           <Route path="/un-employee_cam" element={<UnavailableEmp_cam/>}/>
+          <Route path="/intrusion-analysis" element={<IntrusionAnalysis />
         </Route>
       </Routes>
     </>
