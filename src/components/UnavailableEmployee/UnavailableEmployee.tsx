@@ -99,7 +99,7 @@ const UnavailableEmployee: React.FC = () => {
           <Card className="col-span-1 md:col-span-3 rounded-lg border border-red-500 bg-white/90 shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardContent className="p-2 sm:p-3 h-64 flex flex-col">
               <div className="flex justify-between items-center mb-2">
-                <h3 className="text-xs sm:text-sm font-semibold text-gray-800">
+                <h3 className="text-lg font-semibold mb-2 text-[#F92609] text-center">
                   Unavailable Employees by Camera
                 </h3>
                 {!loading && barData.length > 0 && (
@@ -123,23 +123,23 @@ const UnavailableEmployee: React.FC = () => {
                     <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                     <XAxis 
                       dataKey="camera_name" 
-                      tick={{ fontSize: 10, fill: "#374151" }}
-                      axisLine={{ stroke: "#9ca3af" }}
+                      tick={{ fontSize: 10, fill: "#F92609" }}
+                      axisLine={{ stroke: "#F92609" }}
                      
                       interval="preserveStartEnd"
                       tickFormatter={(value) => value.length > 6 ? `${value.substring(0, 6)}...` : value}
                     />
                     <YAxis 
-                      tick={{ fontSize: 10, fill: "#374151" }} 
+                      tick={{ fontSize: 10, fill: "#F92609" }} 
                       allowDecimals={false}
-                      axisLine={{ stroke: "#9ca3af" }}
+                      axisLine={{ stroke: "#F92609" }}
                 
                       width={30}
                     />
                     <Tooltip content={<CustomTooltip />} />
                     <Bar 
                       dataKey="duration" 
-                      fill="#ef4444" 
+                      fill="#F92609" 
                       radius={[4, 4, 0, 0]}
                       animationDuration={1500}
                     />
@@ -156,7 +156,7 @@ const UnavailableEmployee: React.FC = () => {
           
           <Card className="col-span-1 rounded-lg border border-red-500 bg-white/90 shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center justify-center">
             <CardContent className="p-3 text-center w-full">
-              <p className="text-xs sm:text-sm font-semibold text-gray-800 ">
+              <p className="text-lg font-semibold mb-2 text-[#F92609] text-center ">
                 Camera with most unavailable employees
               </p>
               {loading ? (
@@ -183,7 +183,7 @@ const UnavailableEmployee: React.FC = () => {
         <Card className="w-full rounded-lg border border-red-500 bg-white/90 shadow-md hover:shadow-lg transition-shadow duration-300">
           <CardContent className="p-2 sm:p-3 h-56 sm:h-64 flex flex-col">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="text-xs sm:text-sm font-semibold text-gray-800">
+              <h3 className="text-lg font-semibold mb-2 text-[#F92609] text-center">
                 Unavailable Employees – Daily Trend
               </h3>
               {!loading && lineData.length > 0 && (
