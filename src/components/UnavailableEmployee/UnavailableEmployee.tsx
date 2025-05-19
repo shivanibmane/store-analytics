@@ -26,7 +26,7 @@ ChartJS.register(
   Legend
 );
 
-const UnavailableEmp_cam: React.FC = () => {
+const UnavailableEmployee: React.FC = () => {
 
   const barData = {
     labels: ["1 PM", "2 PM", "3 PM"],
@@ -34,7 +34,7 @@ const UnavailableEmp_cam: React.FC = () => {
       {
         label: "Unavailable Employees",
         data: [50, 20, 0],
-        backgroundColor: "rgba(239, 68, 68, 0.7)", 
+        backgroundColor: "rgba(239, 68, 68, 0.7)",
       },
     ],
   };
@@ -87,12 +87,12 @@ const UnavailableEmp_cam: React.FC = () => {
   return (
     <div className="w-full h-screen bg-gray-50 flex flex-col gap-4 overflow-auto">
       <Header title="Unavailable-Employee" />
-     
-     
+
+
       <div className="flex flex-col gap-4 h-full px-4">
-        
+
         <div className="flex flex-wrap gap-4 h-1/2">
-         
+
           <Card className="w-3/4 rounded-xl border border-red-600 bg-white shadow-md">
             <CardContent className="p-2 h-full">
               <h3 className="text-lg font-medium text-gray-700 mb-1">Unavailable Employees by Hour</h3>
@@ -101,8 +101,8 @@ const UnavailableEmp_cam: React.FC = () => {
               </div>
             </CardContent>
           </Card>
-         
-    
+
+
           <Card className="w-56 rounded-xl border border-red-600 bg-white shadow-md flex items-center">
             <CardContent className="p-3 text-center">
               <p className="text-xs font-medium text-gray-700 mb-1">
@@ -112,8 +112,8 @@ const UnavailableEmp_cam: React.FC = () => {
             </CardContent>
           </Card>
         </div>
-       
-       
+
+
         <Card className="w-11/12 mx-auto h-1/3 rounded-xl border border-red-600 bg-white shadow-md">
           <CardContent className="p-2 h-full">
             <h3 className="text-lg font-medium text-gray-700 mb-1">Unavailable Employees - Daily Trend</h3>
@@ -127,4 +127,4 @@ const UnavailableEmp_cam: React.FC = () => {
   );
 };
 
-export default UnavailableEmp_cam;
+export default UnavailableEmployee;
