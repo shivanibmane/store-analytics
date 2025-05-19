@@ -1,12 +1,12 @@
-import { ChevronRight } from "lucide-react"
-import Header from "../Header"
-import DatePicker from "./DatePicker"
-import { Button } from "../ui/button"
+import { useEffect, useState } from "react";
+import { ChevronRight } from "lucide-react";
+import Header from "../Header";
+import DatePicker from "./DatePicker";
+import { Button } from "../ui/button";
 import { BiMenuAltLeft } from "react-icons/bi";
 import EntryExitTreandLineChart from "./EntryExitTreandLineChart";
 import EntryExitDetailCard from "./EntryExitDetailCard";
 import EntryExitDountChart from "./EntryExitDountChart";
-import { useEffect, useState } from "react";
 
 const EntryExitAnalytics = () => {
   const [peakData, setPeakData]: any = useState(null);
@@ -37,21 +37,23 @@ const EntryExitAnalytics = () => {
   return (
     <div className="w-full">
       <Header title="Entry & Exit Analytics" />
-      <div className="px-4 py-2 ">
-        <div className="flex gap-1 text-[#F92609] items-center text-sm ">
+      <div className="px-4 py-2">
+        <div className="flex gap-1 text-[#F92609] items-center text-sm">
           <p>Menu</p>
           <ChevronRight className="w-4" />
           <p>Entry/Exit Analytics</p>
         </div>
+
         <div className="grid grid-cols-1 sm:flex gap-3 items-center py-3">
           <DatePicker title="Start Date" />
           <DatePicker title="End Date" />
         </div>
-        <div className="grid grid-cols-2 sm:flex sm:flew-row text-left  gap-2">
-          <Button variant="secondary" ><BiMenuAltLeft />Queues Categorization</Button>
-          <Button variant="secondary" > <BiMenuAltLeft />Supplier</Button>
-          <Button variant="secondary" ><BiMenuAltLeft />Operator</Button>
-          <Button variant="secondary" ><BiMenuAltLeft />Turn Around Time</Button>
+
+        <div className="grid grid-cols-2 sm:flex text-left gap-2">
+          <Button variant="secondary"><BiMenuAltLeft />Queues Categorization</Button>
+          <Button variant="secondary"><BiMenuAltLeft />Supplier</Button>
+          <Button variant="secondary"><BiMenuAltLeft />Operator</Button>
+          <Button variant="secondary"><BiMenuAltLeft />Turn Around Time</Button>
         </div>
         <div className="grid grid-cols-1  gap-3 items-center mt-4 mx-auto ">
           <div className="grid grid-col-1 sm:grid-col-1 xl:grid-cols-2  gap-3 ">
@@ -65,7 +67,7 @@ const EntryExitAnalytics = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EntryExitAnalytics
+export default EntryExitAnalytics;

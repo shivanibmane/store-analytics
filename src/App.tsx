@@ -3,7 +3,9 @@ import Home from "./components/Home"
 import CityMap from "./components/Map/CityMap"
 import UserManagement from "./components/UserManagement/UserManagement"
 import EntryExitAnalytics from "./components/EntryExitAnalytics/EntryExitAnalytics"
+import UnavailableEmployee from "./components/UnavailableEmployee/UnavailableEmployee"
 import IntrusionAnalysis from "./components/IntrusionAnalysis/IntrusionAnalysis"
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
           <Route index element={<CityMap />} />
           <Route path="/entry-exit-analytics" element={<EntryExitAnalytics />} />
           <Route path="/user-management" element={<UserManagement />} />
+          <Route path="/unavilable-employee" element={<UnavailableEmployee />} />
           <Route path="/intrusion-analysis" element={<IntrusionAnalysis />} />
         </Route>
       </Routes>
