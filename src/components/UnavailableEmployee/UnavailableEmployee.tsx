@@ -123,16 +123,16 @@ const UnavailableEmployee: React.FC = () => {
                     <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                     <XAxis 
                       dataKey="camera_name" 
-                      tick={{ fontSize: 10, fill: "#F92609" }}
-                      axisLine={{ stroke: "#F92609" }}
+                      tick={{ fontSize: 10, fill: "#9ca3af" }}
+                      axisLine={{ stroke: "#9ca3af" }}
                      
                       interval="preserveStartEnd"
-                      tickFormatter={(value) => value.length > 6 ? `${value.substring(0, 6)}...` : value}
+                      tickFormatter={(value) => value.length > 6 ? `${value}` : value}
                     />
                     <YAxis 
-                      tick={{ fontSize: 10, fill: "#F92609" }} 
+                      tick={{ fontSize: 10, fill: "#9ca3af" }} 
                       allowDecimals={false}
-                      axisLine={{ stroke: "#F92609" }}
+                      axisLine={{ stroke: "#9ca3af" }}
                 
                       width={30}
                     />
