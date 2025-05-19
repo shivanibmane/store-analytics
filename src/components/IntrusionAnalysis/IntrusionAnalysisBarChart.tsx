@@ -12,23 +12,15 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-const chartData = [
-  { camera_name: "Camera A", intrusions: 12 },
-  { camera_name: "Camera B", intrusions: 7 },
-  { camera_name: "Camera C", intrusions: 15 },
-  { camera_name: "Camera D", intrusions: 4 },
-  { camera_name: "Camera E", intrusions: 9 },
-  { camera_name: "Camera F", intrusions: 11 }
-]
 
 const chartConfig = {
-  desktop: {
+  instrusion: {
     label: "Intrusions",
     color: "#F92609",
   },
 } satisfies ChartConfig
 
-const IntrusionAnalysisBarChart = () => {
+const IntrusionAnalysisBarChart = ({ cameraWiseIntrusions }: any) => {
   return (
     <Card className="w-[400px] md:w-full h-[270px] p-2 border-[#F92609]">
       <CardHeader className="">
@@ -40,11 +32,11 @@ const IntrusionAnalysisBarChart = () => {
             width={400}
             height={150}
             accessibilityLayer
-            data={chartData}
+            data={cameraWiseIntrusions}
             margin={{ top: 10 }}
           >
             <YAxis
-              dataKey="intrusions"
+              dataKey={"count"}
               tickLine={false}
               tickMargin={4}
               axisLine={false}
@@ -52,14 +44,14 @@ const IntrusionAnalysisBarChart = () => {
             />
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="camera_name"
+              dataKey={"camera_name"}
               tickLine={false}
               tickMargin={4}
               axisLine={false}
               tick={{ fontSize: 10 }}
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-            <Bar dataKey="intrusions" fill="#F92609" radius={6}>
+            <Bar dataKey="count" fill="#F92609" radius={6}>
               <LabelList
                 position="top"
                 offset={4}
