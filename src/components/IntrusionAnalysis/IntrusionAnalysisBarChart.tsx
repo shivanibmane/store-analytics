@@ -1,34 +1,47 @@
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from "recharts"
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  LabelList,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
+import BarChartSkeletonLoader from "../ChartSkeletonLoaders/BarChartSkeletonLoader";
 
 const chartConfig = {
   instrusion: {
     label: "Intrusions",
     color: "#F92609",
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
-const IntrusionAnalysisBarChart = ({ cameraWiseIntrusions }: any) => {
+const IntrusionAnalysisBarChart = ({ cameraWiseIntrusions, isLoading }: any) => {
+  console.log(cameraWiseIntrusions);
   return (
-    <Card className="w-[400px] md:w-full h-[270px] p-2 border-[#F92609]">
-      <CardHeader className="">
-        <CardTitle className="text-center text-[#F92609] text-sm">Intrusion Analysis</CardTitle>
+    <Card className="w-full  h-[300px] p-2 border-[#F92609]">
+      <CardHeader>
+        <CardTitle className="text-center text-[#F92609] text-sm">
+          Intrusion Analysis
+        </CardTitle>
       </CardHeader>
       <CardContent className="p-2">
-        <ChartContainer config={chartConfig} className="h-[200px] w-full">
-          <BarChart
+        {isLoading ? (
+          <BarChartSkeletonLoader />
+        ) : (
+          <ChartContainer config={chartConfig} className="h-[200px] w-full">{cameraWiseIntrusions.length > 0 ? (<BarChart
             width={400}
             height={150}
             accessibilityLayer
@@ -50,8 +63,11 @@ const IntrusionAnalysisBarChart = ({ cameraWiseIntrusions }: any) => {
               axisLine={false}
               tick={{ fontSize: 10 }}
             />
-            <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-            <Bar dataKey="count" fill="#F92609" radius={6}>
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
+            />
+            <Bar dataKey="count" fill="#F92609" radius={6} >
               <LabelList
                 position="top"
                 offset={4}
@@ -59,10 +75,13 @@ const IntrusionAnalysisBarChart = ({ cameraWiseIntrusions }: any) => {
                 fontSize={10}
               />
             </Bar>
-          </BarChart>
-        </ChartContainer>
+          </BarChart>) : <div className="flex items-center justify-center h-full">
+            <p className="text-sm">Data Not Found</p></div>}
+          </ChartContainer>
+        )}
       </CardContent>
     </Card>
-  )
-}
-export default IntrusionAnalysisBarChart
+  );
+};
+
+export default IntrusionAnalysisBarChart;
