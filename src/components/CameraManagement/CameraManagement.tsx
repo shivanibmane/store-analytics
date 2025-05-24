@@ -4,7 +4,6 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
-import { Toaster } from "../ui/sonner";
 import {
   Popover,
   PopoverContent,
@@ -174,16 +173,7 @@ const CameraManagement = () => {
           </form>
         </div>
       </div>
-
-      {/* Global Toaster */}
-      <Toaster
-        toastOptions={{
-          className: "bg-[#F92609] text-white rounded-lg shadow-lg",
-          duration: 3000,
-        }}
-      />
     </div>
-
   );
 };
 

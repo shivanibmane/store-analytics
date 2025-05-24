@@ -41,7 +41,7 @@ const IntrusionAnalysisBarChart = ({ cameraWiseIntrusions, isLoading }: any) => 
         {isLoading ? (
           <BarChartSkeletonLoader />
         ) : (
-          <ChartContainer config={chartConfig} className="h-[200px] w-full">{cameraWiseIntrusions.length > 0 ? (<BarChart
+          <ChartContainer config={chartConfig} className="h-[200px] w-full">{cameraWiseIntrusions?.length > 0 ? (<BarChart
             width={400}
             height={150}
             accessibilityLayer

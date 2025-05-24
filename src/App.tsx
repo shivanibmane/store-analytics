@@ -6,6 +6,7 @@ import EntryExitAnalytics from "./components/EntryExitAnalytics/EntryExitAnalyti
 import UnavailableEmployee from "./components/UnavailableEmployee/UnavailableEmployee"
 import IntrusionAnalysis from "./components/IntrusionAnalysis/IntrusionAnalysis"
 import CameraManagement from "./components/CameraManagement/CameraManagement"
+import { Toaster } from "sonner"
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/camera-management" element={<CameraManagement />} />
         </Route>
       </Routes>
+      <Toaster richColors position={"top-right"} />
     </>
   )
 }
