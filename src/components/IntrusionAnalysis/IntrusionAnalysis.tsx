@@ -3,10 +3,11 @@ import Header from "../Header";
 import IntrusionAnalysisBarChart from "./IntrusionAnalysisBarChart";
 import IntrusionAnalysisLineChart from "./IntrusionAnalysisLineChart";
 import IntrusionMaxCameraCountCard from "./InstrsionMaxCameraCountCard";
+import { toast } from "sonner";
 
 const IntrusionAnalysis = () => {
-  const [cameraWiseIntrusions, setCameraWiseIntrusions] = useState([]);
-  const [intrusionTrend, setIntrusionTrend] = useState([]);
+  const [cameraWiseIntrusions, setCameraWiseIntrusions] = useState(null);
+  const [intrusionTrend, setIntrusionTrend] = useState(null);
   const [maxIntrusionCamera, setMaxIntrusionCamera]: any = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,11 +21,6 @@ const IntrusionAnalysis = () => {
           fetch("http://localhost:8000/intrusion_trend"),
         ]);
 
-        // Throw if any fetch failed
-        if (!cameraWiseRes.ok || !maxCameraRes.ok || !trendRes.ok) {
-          throw new Error("Server error");
-        }
-
         const cameraWiseData = await cameraWiseRes.json();
         const maxCameraData = await maxCameraRes.json();
         const trendData = await trendRes.json();
@@ -32,13 +28,22 @@ const IntrusionAnalysis = () => {
         setCameraWiseIntrusions(cameraWiseData);
         setMaxIntrusionCamera(maxCameraData);
         setIntrusionTrend(trendData);
+        setIsLoading(false);
+
+        const isCameraDataValid = Array.isArray(cameraWiseData) && cameraWiseData.length > 0;
+        const isMaxCameraValid = maxCameraData && Object.keys(maxCameraData).length > 0;
+        const isTrendDataValid = Array.isArray(trendData) && trendData.length > 0;
+
+        if (isCameraDataValid && isMaxCameraValid && isTrendDataValid) {
+          toast.success("Data loaded successfully");
+        } else {
+          toast.warning("Data Not Found");
+        }
       } catch (error) {
-        console.error("Error fetching intrusion data:", error);
-      } finally {
+        toast.error("Failed to load data. Please check your server or network.");
         setIsLoading(false);
       }
     };
-
     fetchIntrusionData();
   }, []);
 

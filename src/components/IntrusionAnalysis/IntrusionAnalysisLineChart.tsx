@@ -32,7 +32,7 @@ const IntrusionAnalysisLineChart = ({ intrusionTrend, isLoading }: any) => {
         <LineChartSkeletonLoader />
         :
         <ChartContainer config={chartConfig} className="h-[200px] w-full pr-4">
-          {intrusionTrend.length > 0 ? <LineChart data={intrusionTrend}>
+          {intrusionTrend?.length > 0 ? <LineChart data={intrusionTrend}>
             <CartesianGrid vertical={false} />
             <YAxis tickLine={false} axisLine={false} >
               <Label
