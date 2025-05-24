@@ -6,7 +6,7 @@ const OccupancyMaxCount=()=>{
             <h3 className="text-lg font-semibold mb-2 text-[#F92609] text-center">
                 Maximum Occupancy Count
             </h3>
-            <p className="text-center text-[#F92609] font-semibold text-lg">50</p>        
+            <p className="text-center text-black font-bold text-lg">49</p>        
     </div>
     )
 

@@ -1,6 +1,7 @@
 import Header from "../Header";
 import OccupancyMaxCount from "./OccupancyMaxCount";
 import { OccupancyMonitoringBarChart } from "./OccupancyMonitoringBarChart";
+import { OccupancyMonitoringTrendChart } from "./OccupancyMonitoringTrendChart";
 
 
 function OccupancyMonitoring(){
@@ -13,7 +14,7 @@ function OccupancyMonitoring(){
                     <OccupancyMonitoringBarChart/>
                     <OccupancyMaxCount/>
                 </div>
-                
+                <OccupancyMonitoringTrendChart/>
             </div>
         </div>
     )

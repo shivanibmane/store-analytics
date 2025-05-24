@@ -27,7 +27,7 @@ const chartData = [
 
 const chartConfig = {
   occupancy: {
-    label: "Occupancy",
+    label: "occupancy",
     color: "#F92609",
   },
 } satisfies ChartConfig
@@ -47,13 +47,13 @@ export function OccupancyMonitoringBarChart() {
               tickLine={false}
               tickMargin={4}
               axisLine={false}
-              tick={{ fontSize: 10 }}
+              tick={{ fontSize: 12 }}
             />
 
             <YAxis
               domain={[0, 50]}
               ticks={[0, 10, 20, 30, 40, 50]}
-              tick={{ fontSize: 10 }}
+              tick={{ fontSize: 12 }}
               axisLine={false}
               tickLine={false}
             />
@@ -62,7 +62,7 @@ export function OccupancyMonitoringBarChart() {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="occupancy" fill="#F92609" radius={6} />
+            <Bar dataKey="occupancy" fill="#F92609" radius={6} barSize={80} />
           </BarChart>
         </ChartContainer>
       </CardContent>
