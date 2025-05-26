@@ -3,7 +3,7 @@ import { LuMapPinned } from "react-icons/lu";
 import { IoAnalyticsOutline } from "react-icons/io5";
 import { LuUsers } from "react-icons/lu";
 import { FaRegChartBar } from "react-icons/fa";
-import { FaChartLine, FaUsersLine } from "react-icons/fa6";
+import { FaChartLine } from "react-icons/fa6";
 import { IoCameraOutline } from "react-icons/io5";
 import { RiBarChartFill } from "react-icons/ri";
 import { LuChartNoAxesCombined } from "react-icons/lu";
