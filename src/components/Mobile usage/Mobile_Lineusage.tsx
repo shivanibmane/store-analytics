@@ -1,4 +1,4 @@
-import React from "react"
+
 import {
   CartesianGrid,
   Line,
@@ -22,7 +22,6 @@ import {
   ChartTooltipContent
 } from "@/components/ui/chart"
 
-// Chart configuration
 const chartConfig = {
   intrusions: {
     label: "Intrusions",
@@ -30,7 +29,6 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-// Sample data with hours and time
 const sampleIntrusionTrend = [
   { hour: "01:00", time: 5 },
   { hour: "02:00", time: 8 },
