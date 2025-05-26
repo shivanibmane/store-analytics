@@ -8,6 +8,7 @@ import IntrusionAnalysis from "./components/IntrusionAnalysis/IntrusionAnalysis"
 import CameraManagement from "./components/CameraManagement/CameraManagement"
 import { Toaster } from "sonner"
 import OccupancyMonitoring from "./components/OccupancyMonitoring/OccupancyMonitoring"
+import CameraTempering from "./components/CameraTempering/CameraTemperin
 
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
           <Route path="/unavilable-employee" element={<UnavailableEmployee />} />
           <Route path="/intrusion-analysis" element={<IntrusionAnalysis />} />
           <Route path="/camera-management" element={<CameraManagement />} />
-          <Route path="/occupancy-monitoring" element={<OccupancyMonitoring/>}/>
+          <Route path="/occupancy-monitoring" element={<OccupancyMonitoring/>}
+          <Route path="/mobile-usage" element={<div>Mobile Usage</div>} />
+          <Route path="/camera-tampering" element={<CameraTempering />} />
         </Route>
       </Routes>
       <Toaster richColors position={"top-right"} />
