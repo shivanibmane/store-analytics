@@ -5,6 +5,7 @@ import UserManagement from "./components/UserManagement/UserManagement"
 import EntryExitAnalytics from "./components/EntryExitAnalytics/EntryExitAnalytics"
 import UnavailableEmployee from "./components/UnavailableEmployee/UnavailableEmployee"
 import IntrusionAnalysis from "./components/IntrusionAnalysis/IntrusionAnalysis"
+import Mobile_usage from "./components/Mobile usage/Mobile_usage"
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/user-management" element={<UserManagement />} />
           <Route path="/unavilable-employee" element={<UnavailableEmployee />} />
           <Route path="/intrusion-analysis" element={<IntrusionAnalysis />} />
+          <Route path="/Mobile-usage" element={<Mobile_usage/>}/>
         </Route>
       </Routes>
     </>
