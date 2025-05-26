@@ -6,8 +6,11 @@ import UserManagement from "./components/UserManagement/UserManagement"
 import EntryExitAnalytics from "./components/EntryExitAnalytics/EntryExitAnalytics"
 import UnavailableEmployee from "./components/UnavailableEmployee/UnavailableEmployee"
 import IntrusionAnalysis from "./components/IntrusionAnalysis/IntrusionAnalysis"
-import MobileUsage from "./components/Mobile usage/Mobile_usage"  // fixed import path
+import MobileUsage from "./components/MobileUsage/Mobile_usage"
 import CameraManagement from "./components/CameraManagement/CameraManagement"
+import { Toaster } from "sonner"
+import OccupancyMonitoring from "./components/OccupancyMonitoring/OccupancyMonitoring"
+import CameraTempering from "./components/CameraTempering/CameraTempering"
 
 function App() {
   return (
@@ -15,14 +18,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} >
           <Route index element={<CityMap />} />
-          <Route path="entry-exit-analytics" element={<EntryExitAnalytics />} />
-          <Route path="user-management" element={<UserManagement />} />
-          <Route path="unavailable-employee" element={<UnavailableEmployee />} />
-          <Route path="intrusion-analysis" element={<IntrusionAnalysis />} />
-          <Route path="mobile-usage" element={<MobileUsage />} />         
-          <Route path="camera-management" element={<CameraManagement />} />
+          <Route path="/entry-exit-analytics" element={<EntryExitAnalytics />} />
+          <Route path="/user-management" element={<UserManagement />} />
+          <Route path="/unavilable-employee" element={<UnavailableEmployee />} />
+          <Route path="/intrusion-analysis" element={<IntrusionAnalysis />} />
+          <Route path="/camera-management" element={<CameraManagement />} />
+          <Route path="/occupancy-monitoring" element={<OccupancyMonitoring />} />
+          <Route path="/mobile-usage" element={<MobileUsage />} />
+          <Route path="/camera-tampering" element={<CameraTempering />} />
         </Route>
       </Routes>
+      <Toaster richColors position={"top-right"} />
     </>
   )
 }

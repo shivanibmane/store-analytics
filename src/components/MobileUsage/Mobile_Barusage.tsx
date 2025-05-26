@@ -1,4 +1,3 @@
-import React from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   ChartConfig,
@@ -9,41 +8,32 @@ import {
 
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from "recharts"
 
-// Sample intrusion data
-const cameraWiseIntrusions = [
-  { camera_name: "Gate A", count: 12 },
-  { camera_name: "Lobby", count: 8 },
-  { camera_name: "Parking Lot", count: 15 },
-  { camera_name: "Server Room", count: 5 },
-  { camera_name: "Back Entrance", count: 10 }
-]
-
 const chartConfig = {
-  instrusion: {
-    label: "Intrusions",
+  duration: {
+    label: "Duration",
     color: "#F92609",
   },
 } satisfies ChartConfig
 
-const Mobile_Barusage = () => {
+const Mobile_Barusage = ({ mobileUsageCameraData, isLoading }: any) => {
   return (
-    <Card className="w-full max-w-[1000px] md:w-full h-[270px] p-2 border-[#F92609]">
+    <Card className="w-full md:w-full h-[280px] p-2 border-[#F92609]">
       <CardHeader>
         <CardTitle className="text-center text-[#F92609] text-sm">
-            BarChart Analysis
+          Mobile Usage Camera
         </CardTitle>
       </CardHeader>
       <CardContent className="p-2">
-        <ChartContainer config={chartConfig} className="h-[200px] w-full">
+        <ChartContainer config={chartConfig} className="h-[200px] w-full">{!isLoading ?
           <BarChart
             width={900}
             height={150}
             accessibilityLayer
-            data={cameraWiseIntrusions}
+            data={mobileUsageCameraData}
             margin={{ top: 10 }}
           >
             <YAxis
-              dataKey={"count"}
+              dataKey={"duration"}
               tickLine={false}
               tickMargin={4}
               axisLine={false}
@@ -58,7 +48,7 @@ const Mobile_Barusage = () => {
               tick={{ fontSize: 10 }}
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-            <Bar dataKey="count" fill="#F92609" radius={6}>
+            <Bar dataKey="duration" fill="#F92609" radius={6}>
               <LabelList
                 position="top"
                 offset={4}
@@ -66,7 +56,7 @@ const Mobile_Barusage = () => {
                 fontSize={10}
               />
             </Bar>
-          </BarChart>
+          </BarChart> : <div className="flex text-lg items-center justify-center h-full"><p>Loading...</p></div>}
         </ChartContainer>
       </CardContent>
     </Card>

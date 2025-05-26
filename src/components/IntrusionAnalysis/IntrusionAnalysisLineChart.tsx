@@ -1,8 +1,7 @@
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
+import { CartesianGrid, Label, Line, LineChart, XAxis, YAxis } from "recharts"
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -12,6 +11,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
+import LineChartSkeletonLoader from "../ChartSkeletonLoaders/LineChartSkeletonLoader";
 
 const chartConfig = {
   intrusions: {
@@ -20,7 +20,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-const IntrusionAnalysisLineChart = ({ intrusionTrend }: any) => {
+const IntrusionAnalysisLineChart = ({ intrusionTrend, isLoading }: any) => {
   return (
     <Card className="flex flex-col w-full border-[#F92609]">
       <CardHeader>
@@ -28,17 +28,31 @@ const IntrusionAnalysisLineChart = ({ intrusionTrend }: any) => {
           Intrusion Analysis Trend
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent>{isLoading ?
+        <LineChartSkeletonLoader />
+        :
         <ChartContainer config={chartConfig} className="h-[200px] w-full pr-4">
-          <LineChart data={intrusionTrend}>
+          {intrusionTrend?.length > 0 ? <LineChart data={intrusionTrend}>
             <CartesianGrid vertical={false} />
-            <YAxis tickLine={false} axisLine={false} />
+            <YAxis tickLine={false} axisLine={false} >
+              <Label
+                value="Count"
+                angle={-90}
+                position="insideLeft"
+                style={{ textAnchor: "middle", fontSize: 12 }}
+              /></YAxis>
             <XAxis
               dataKey={"time"}
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-            />
+            ><Label
+                value="Time"
+                position="insideBottom"
+                offset={-4}
+                style={{ textAnchor: "middle", fontSize: 12, }}
+                className=""
+              /></XAxis>
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <Line
               dataKey={"count"}
@@ -48,13 +62,11 @@ const IntrusionAnalysisLineChart = ({ intrusionTrend }: any) => {
               dot={{ fill: "#F92609" }}
               activeDot={{ r: 5 }}
             />
-          </LineChart>
-        </ChartContainer>
+          </LineChart> : <div className="flex items-center justify-center h-full">
+            <p className="text-sm">Data Not Found</p></div>}
+        </ChartContainer>}
       </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
-        <p className="font-semibold">Total Instrusion Analysis</p>
-      </CardFooter>
-    </Card>
+    </Card >
   )
 }
 export default IntrusionAnalysisLineChart

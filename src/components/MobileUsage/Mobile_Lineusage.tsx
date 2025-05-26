@@ -10,7 +10,6 @@ import {
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle
 } from "@/components/ui/card"
@@ -29,35 +28,26 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-const sampleIntrusionTrend = [
-  { hour: "01:00", time: 5 },
-  { hour: "02:00", time: 8 },
-  { hour: "03:00", time: 6 },
-  { hour: "04:00", time: 10 },
-  { hour: "05:00", time: 7 },
-  { hour: "06:00", time: 12 },
-]
-
-const Mobile_Lineusage = () => {
+const Mobile_Lineusage = ({ mobileUasgeTrendData, isLoading }: any) => {
   return (
-    <Card className="flex flex-col w-full border-[#F92609]">
+    <Card className="w-full flex flex-col border-[#F92609]">
       <CardHeader>
         <CardTitle className="text-center text-[#F92609]">
-         Trend  Analysis 
+          Mobile Usage Trend
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[200px] w-full pr-2">
-          <LineChart data={sampleIntrusionTrend}>
+        <ChartContainer config={chartConfig} className="h-[220px] w-full p-2">
+          {!isLoading ? <LineChart data={mobileUasgeTrendData}>
             <CartesianGrid vertical={false} />
             <YAxis
-              dataKey={"time"}
+              dataKey={"duration"}
               tickLine={false}
               axisLine={false}
-              label={{ value: "Time", angle: -90, position: "insideLeft", offset: 0 }}
+              label={{ value: "Duration", angle: -90, position: "insideLeft", offset: 0 }}
             />
             <XAxis
-              dataKey={"hour"}
+              dataKey={"time"}
               tickLine={false}
               axisLine={false}
               tickMargin={8}
@@ -72,12 +62,9 @@ const Mobile_Lineusage = () => {
               dot={{ fill: "#F92609" }}
               activeDot={{ r: 5 }}
             />
-          </LineChart>
+          </LineChart> : <div className="flex text-lg items-center justify-center h-full"><p>Loading...</p></div>}
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
-        <p className="font-semibold">Total Trend Analysis</p>
-      </CardFooter>
     </Card>
   )
 }
