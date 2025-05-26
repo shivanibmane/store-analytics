@@ -78,7 +78,7 @@ const Mobile_Lineusage = () => {
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
-        <p className="font-semibold">Total Intrusion Analysis</p>
+        <p className="font-semibold">Total Trend Analysis</p>
       </CardFooter>
     </Card>
   )
