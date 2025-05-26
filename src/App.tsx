@@ -8,7 +8,7 @@ import IntrusionAnalysis from "./components/IntrusionAnalysis/IntrusionAnalysis"
 import CameraManagement from "./components/CameraManagement/CameraManagement"
 import { Toaster } from "sonner"
 import OccupancyMonitoring from "./components/OccupancyMonitoring/OccupancyMonitoring"
-import CameraTempering from "./components/CameraTempering/CameraTemperin
+import CameraTempering from "./components/CameraTempering/CameraTempering
 
 
 function App() {
