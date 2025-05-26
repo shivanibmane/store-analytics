@@ -47,7 +47,6 @@ const IntrusionAnalysis = () => {
     fetchIntrusionData();
   }, []);
 
-
   return (
     <div className="w-full">
       <Header title="Intrusion Analysis" />
