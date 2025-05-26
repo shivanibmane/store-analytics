@@ -44,7 +44,7 @@ export function OccupancyMonitoringBarChart({cameraOccupancy,isLoading}:any) {
           <BarChartSkeletonLoader/>
         ) : (
           <ChartContainer config={chartConfig} className="h-[200px] w-full">
-          {cameraOccupancy.length>0 ? (
+          {Array.isArray(cameraOccupancy) && cameraOccupancy.length>0 ? (
           <BarChart accessibilityLayer data={cameraOccupancy}>
             <CartesianGrid vertical={false} />
             <XAxis
