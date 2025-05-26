@@ -14,7 +14,8 @@ import { Checkbox } from "../ui/checkbox";
 const modulesList = [
   "Intrusion",
   "Entry Exit",
-  "Employee Unavailability"
+  "Employee Unavailability",
+  "Occupancy Monitoring", "Mobile Usage", "Camera Tempering"
 ];
 
 const CameraManagement = () => {
@@ -142,7 +143,7 @@ const CameraManagement = () => {
               <Label htmlFor="modules" style={{ color: '#F92609' }} className="mb-2">Modules</Label>
               <Popover>
                 <PopoverTrigger asChild>
-                  <Button variant="outline" className="w-full justify-start text-left">
+                  <Button variant="outline" className="w-full border justify-start text-left overflow-x-auto whitespace-nowrap no-scrollbar">
                     {formData.modules.length > 0
                       ? formData.modules.join(", ")
                       : "None"}
