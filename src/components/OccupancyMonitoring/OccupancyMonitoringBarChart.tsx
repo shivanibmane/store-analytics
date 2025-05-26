@@ -2,7 +2,7 @@
 "use client"
 
 //import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, Label, XAxis, YAxis } from "recharts"
 
 import {
   Card,
@@ -37,7 +37,7 @@ export function OccupancyMonitoringBarChart({cameraOccupancy,isLoading}:any) {
   return (
     <Card className="w-full  h-[300px] p-2 border-[#F92609]">
       <CardHeader>
-        <CardTitle className="text-center text-[#F92609] text-sm">Occupancy</CardTitle>
+        <CardTitle className="text-center text-[#F92609] text-sm">Occupancy Monitoring</CardTitle>
       </CardHeader>
       <CardContent className="p-2">
         {isLoading ? (
@@ -45,23 +45,41 @@ export function OccupancyMonitoringBarChart({cameraOccupancy,isLoading}:any) {
         ) : (
           <ChartContainer config={chartConfig} className="h-[200px] w-full">
           {Array.isArray(cameraOccupancy) && cameraOccupancy.length>0 ? (
-          <BarChart accessibilityLayer data={cameraOccupancy}>
+          <BarChart accessibilityLayer data={cameraOccupancy}
+            margin={{
+              top: 10,
+              bottom: 20,
+              left: 0,
+              right: 0,
+            }}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey={"camera_name"}
               tickLine={false}
               tickMargin={4}
               axisLine={false}
-              tick={{ fontSize: 12 }}
-            />
+              tick={{ fontSize: 12 }}>
+                <Label
+                  value="Camera Name"
+                  position="bottom"
+                  //offset={10}
+                  style={{ textAnchor: "middle", fontSize: 12 }}
+                />
+                </XAxis>
 
             <YAxis
               dataKey={"count"}
               //ticks={[0, 10, 20, 30, 40, 50]}
               tick={{ fontSize: 12 }}
               axisLine={false}
-              tickLine={false}
-            />
+              tickLine={false}>
+                <Label
+                      value="Count"
+                      angle={-90}
+                      position="insideLeft"
+                      style={{ textAnchor: "middle", fontSize: 12 }}
+                />
+                </YAxis>     
 
             <ChartTooltip
               cursor={false}

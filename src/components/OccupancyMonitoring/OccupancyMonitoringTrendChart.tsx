@@ -43,14 +43,15 @@ export function OccupancyMonitoringTrendChart({occupancyTrend,isLoading}:any) {
       </CardHeader>
       <CardContent>
         {isLoading ? <LineChartSkeletonLoader/> :
-        <ChartContainer config={chartConfig} className="h-[200px] w-full pr-4">
+        <ChartContainer config={chartConfig} className="h-[200px] w-full pr-4 overflow-visible">
           {Array.isArray(occupancyTrend) && occupancyTrend.length>0 ? 
           <LineChart
             accessibilityLayer
             data={occupancyTrend}
             margin={{
+              top:10,
               left: 12,
-              right: 12,
+              right: 40,
               bottom:30
             }}
           >

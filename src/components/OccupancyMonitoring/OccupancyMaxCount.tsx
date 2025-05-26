@@ -10,7 +10,7 @@ const OccupancyMaxCount=({maxOccupancy,isLoading}:any)=>{
                 Maximum Occupancy Count
             </h3>
             <p>{maxOccupancy?.camera_name ? maxOccupancy?.camera_name : <span className="text-sm ">Data Not Found</span>}</p> 
-            <p className="text-2xl font-bold">{maxOccupancy?.max_count ? maxOccupancy?.max_count : ""}</p>       
+            <p className="text-xl font-bold">{maxOccupancy?.max_count ? maxOccupancy?.max_count : ""}</p>       
     </div>
     )
 
