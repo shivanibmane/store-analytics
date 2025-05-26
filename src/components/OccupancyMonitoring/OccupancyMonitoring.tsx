@@ -11,7 +11,7 @@ function OccupancyMonitoring(){
     const[camerawiseOccupancy,setCamerawiseOccupancy]=useState(null);
     const[maxOccupancy,setMaxOccupancy]=useState(null);
     const[occupancyTrend,setOccupancyTrend]:any=useState(null);
-    const[isLoading,setIsLoading]=useState(true);
+    const[isLoading,setIsLoading]=useState(true); //for loaders
 
     useEffect(()=>{
         const fetchOccupancyData=async()=>{
