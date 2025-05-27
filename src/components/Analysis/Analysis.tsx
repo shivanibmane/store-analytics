@@ -11,7 +11,7 @@ const analyticsPages = [
   { name: "Camera Tampering", path: "camera-tampering" },
 ];
 
-const PageAnalysis = () => {
+const Analysis = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -46,4 +46,4 @@ const PageAnalysis = () => {
   );
 };
 
-export default PageAnalysis;
+export default Analysis;
