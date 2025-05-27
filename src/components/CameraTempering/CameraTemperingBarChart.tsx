@@ -47,12 +47,12 @@ const CameraTemperingBarChart = ({ cameraTemperingTrend, isLoading }: any) => {
   const transformedData = transformChartData(cameraTemperingTrend || []);
 
   return (
-    <Card className="w-full h-[300px] p-2 border-[#F92609]">
+    <Card className="w-full h-[290px] p-2 border-[#F92609]">
       <CardHeader>
         <CardTitle className="text-center text-[#F92609]">Tempering Type Camerawise</CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[230px] w-full">
+        <ChartContainer config={chartConfig} className="h-[220px] w-full">
           {!isLoading ? <BarChart accessibilityLayer data={transformedData} width={400}
             height={200}
           >
@@ -68,7 +68,7 @@ const CameraTemperingBarChart = ({ cameraTemperingTrend, isLoading }: any) => {
               dataKey={"camera_name"}
               tickLine={false}
               axisLine={false}
-              tickMargin={8}
+              tickMargin={5}
             ><Label
                 value="Camera Name"
                 position="insideBottom"

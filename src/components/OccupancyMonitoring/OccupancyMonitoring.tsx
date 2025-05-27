@@ -3,6 +3,7 @@ import OccupancyMaxCount from "./OccupancyMaxCount";
 import { OccupancyMonitoringBarChart } from "./OccupancyMonitoringBarChart";
 import { OccupancyMonitoringTrendChart } from "./OccupancyMonitoringTrendChart";
 import { toast } from "sonner";
+import AnalysisHeading from "../Analysis/AnalysisHeading";
 
 
 function OccupancyMonitoring() {
@@ -51,7 +52,7 @@ function OccupancyMonitoring() {
 
     return (
         <div className="w-full">
-            <h1 className="text-1xl font-semibold pb-1 text-center sm:text-start">Occupancy Monitoring</h1>
+            <AnalysisHeading title="Occupancy Monitoring" />
             <div className="flex flex-col xl:flex-row mb-4 gap-3">
                 <OccupancyMonitoringBarChart
                     cameraOccupancy={camerawiseOccupancy}

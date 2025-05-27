@@ -5,6 +5,7 @@ import { BiMenuAltLeft } from "react-icons/bi";
 import EntryExitTreandLineChart from "./EntryExitTreandLineChart";
 import EntryExitDetailCard from "./EntryExitDetailCard";
 import EntryExitDountChart from "./EntryExitDountChart";
+import AnalyticsHeading from "../Analysis/AnalysisHeading";
 
 const EntryExitAnalytics = () => {
   const [peakData, setPeakData]: any = useState(null);
@@ -34,27 +35,31 @@ const EntryExitAnalytics = () => {
 
   return (
     <div className="w-full">
+      <AnalyticsHeading title={"Entry Exit Analytics"} />
       <div>
-        <h1 className="text-1xl font-semibold text-center sm:text-start">Entry/Exit Analytics</h1>
-        <div className="grid grid-cols-1 sm:flex  gap-3 items-center py-3">
-          <DatePicker title="Start Date" />
-          <DatePicker title="End Date" />
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:flex text-left gap-2">
-          <Button variant="secondary"><BiMenuAltLeft />Queues Categorization</Button>
-          <Button variant="secondary"><BiMenuAltLeft />Supplier</Button>
-          <Button variant="secondary"><BiMenuAltLeft />Operator</Button>
-          <Button variant="secondary"><BiMenuAltLeft />Turn Around Time</Button>
-        </div>
-        <div className="grid grid-cols-1  gap-3 items-center mt-4 mx-auto ">
-          <div className="grid grid-col-1 sm:grid-cols-1 xl:grid-cols-2  gap-3 ">
+        <div className="flex flex-col xl:flex-row gap-2">
+          <div className="flex flex-col gap-2">
+            <div className="grid grid-cols-1 sm:flex gap-3 items-center py-1">
+              <DatePicker title="Start Date" />
+              <DatePicker title="End Date" />
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:flex text-left gap-2">
+              <Button variant="secondary"><BiMenuAltLeft />Queues Categorization</Button>
+              <Button variant="secondary"><BiMenuAltLeft />Supplier</Button>
+              <Button variant="secondary"><BiMenuAltLeft />Operator</Button>
+              <Button variant="secondary"><BiMenuAltLeft />Turn Around Time</Button>
+            </div>
+            {/* <div className="grid grid-col-1 sm:grid-cols-1 xl:grid-cols-2  gap-3"> */}
             <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start lg:flex-row gap-3">
               <EntryExitDetailCard title="Peak Hours" value={peakData?.peak_hour} />
               <EntryExitDetailCard title="Peak Entry" value={peakData?.peak_entry} />
               <EntryExitDetailCard title="Peak Exit" value={peakData?.peak_exit} /></div>
-            <EntryExitDountChart totalEntryExit={totalEntryExit} />
+            {/* </div> */}
           </div>
+          <EntryExitDountChart totalEntryExit={totalEntryExit} />
+        </div>
+        <div className="grid grid-cols-1  gap-3 items-center mt-2 mx-auto ">
+
           <EntryExitTreandLineChart trendData={trendData} />
         </div>
       </div>

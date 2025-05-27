@@ -3,6 +3,7 @@ import IntrusionAnalysisBarChart from "./IntrusionAnalysisBarChart";
 import IntrusionAnalysisLineChart from "./IntrusionAnalysisLineChart";
 import IntrusionMaxCameraCountCard from "./InstrsionMaxCameraCountCard";
 import { toast } from "sonner";
+import AnalysisHeading from "../Analysis/AnalysisHeading";
 
 const IntrusionAnalysis = () => {
   const [cameraWiseIntrusions, setCameraWiseIntrusions] = useState(null);
@@ -48,7 +49,7 @@ const IntrusionAnalysis = () => {
 
   return (
     <div className="w-full">
-      <h1 className="text-1xl font-semibold pb-1 text-center lg:text-start">Intrusion Analysis</h1>
+      <AnalysisHeading title="Intrusion Analysis" />
       <div className="flex flex-col xl:flex-row mb-4 gap-3">
         <IntrusionAnalysisBarChart
           cameraWiseIntrusions={cameraWiseIntrusions}

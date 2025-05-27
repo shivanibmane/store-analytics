@@ -31,7 +31,7 @@ const chartConfig = {
 const IntrusionAnalysisBarChart = ({ cameraWiseIntrusions, isLoading }: any) => {
   console.log(cameraWiseIntrusions);
   return (
-    <Card className="w-full  h-[300px] p-2 border-[#F92609]">
+    <Card className="w-full  h-[270px] p-2 border-[#F92609]">
       <CardHeader>
         <CardTitle className="text-center text-[#F92609] text-sm">
           Intrusion Analysis
