@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import Header from "../Header"
 import CameraTemperingBarChart from "./CameraTemperingBarChart"
 import CameraTemperingPieChart from "./CameraTemperingPieChart"
 import { toast } from "sonner"
@@ -45,8 +44,8 @@ const CameraTempering = () => {
 
   return (
     <div className="w-full">
-      <Header title="Camera Tempering" />
-      <div className="flex flex-col gap-4 p-3">
+      <h1 className="text-1xl font-semibold text-center sm:text-start">Camera Tempering</h1>
+      <div className="flex flex-col gap-4 py-3">
         <CameraTemperingPieChart cameraWiseTepmering={cameraWiseTepmering} isLoading={isLoading} />
         <CameraTemperingBarChart cameraTemperingTrend={cameraTemperingTrend} isLoading={isLoading} />
       </div>

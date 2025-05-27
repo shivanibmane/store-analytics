@@ -46,7 +46,7 @@ const UnavailableEmployeeBar: React.FC = () => {
   }, []);
 
   return (
-    <Card className="w-[400px] md:w-full h-[270px] p-2 border-[#F92609]">
+    <Card className="w-full md:w-full h-[270px] p-2 border-[#F92609]">
       <CardHeader >
         <CardTitle className="text-center text-[#F92609] text-sm">Unavailable Employees </CardTitle>
       </CardHeader>

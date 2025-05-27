@@ -37,7 +37,7 @@ const EntryExitDountChart = ({ totalEntryExit }: any) => {
   ];
 
   return (
-    <Card className="w-full max-w-full p-2 border-[#F92609]">
+    <Card className="w-full  md:w-full p-2 border-[#F92609]">
       <CardHeader className="items-center ">
         <CardTitle className="text-[#F92609] text-center text-sm">Total Entry & Exit</CardTitle>
       </CardHeader>

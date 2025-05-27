@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Header from "../Header";
 import IntrusionAnalysisBarChart from "./IntrusionAnalysisBarChart";
 import IntrusionAnalysisLineChart from "./IntrusionAnalysisLineChart";
 import IntrusionMaxCameraCountCard from "./InstrsionMaxCameraCountCard";
@@ -49,17 +48,15 @@ const IntrusionAnalysis = () => {
 
   return (
     <div className="w-full">
-      <Header title="Intrusion Analysis" />
-      <div className="px-4 py-3">
-        <div className="flex flex-col xl:flex-row mb-4 gap-3">
-          <IntrusionAnalysisBarChart
-            cameraWiseIntrusions={cameraWiseIntrusions}
-            isLoading={isLoading}
-          />
-          <IntrusionMaxCameraCountCard maxIntrusionCamera={maxIntrusionCamera} isLoading={isLoading} />
-        </div>
-        <IntrusionAnalysisLineChart intrusionTrend={intrusionTrend} isLoading={isLoading} />
+      <h1 className="text-1xl font-semibold pb-1 text-center lg:text-start">Intrusion Analysis</h1>
+      <div className="flex flex-col xl:flex-row mb-4 gap-3">
+        <IntrusionAnalysisBarChart
+          cameraWiseIntrusions={cameraWiseIntrusions}
+          isLoading={isLoading}
+        />
+        <IntrusionMaxCameraCountCard maxIntrusionCamera={maxIntrusionCamera} isLoading={isLoading} />
       </div>
+      <IntrusionAnalysisLineChart intrusionTrend={intrusionTrend} isLoading={isLoading} />
     </div>
   );
 };
