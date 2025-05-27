@@ -42,8 +42,8 @@ const Mobile_usage = () => {
 
   return (
     <div className="w-full">
-      <Header title="Mobile usage" />
-      <div className="flex flex-col justify-center items-center gap-6 w-full px-4 mt-6">
+      <Header title="Mobile Usage" />
+      <div className="flex flex-col justify-center items-center gap-4 w-full p-2">
         <Mobile_Barusage mobileUsageCameraData={mobileUsageCameraData} isLoading={isLoading} />
         <Mobile_Lineusage mobileUasgeTrendData={mobileUasgeTrendData} isLoading={isLoading} />
       </div>

@@ -6,7 +6,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts"
 
 const chartConfig = {
   duration: {
@@ -17,14 +17,14 @@ const chartConfig = {
 
 const Mobile_Barusage = ({ mobileUsageCameraData, isLoading }: any) => {
   return (
-    <Card className="w-full md:w-full h-[280px] p-2 border-[#F92609]">
+    <Card className="w-full md:w-full h-[310px] p-2 border-[#F92609]">
       <CardHeader>
         <CardTitle className="text-center text-[#F92609] text-sm">
           Mobile Usage Camera
         </CardTitle>
       </CardHeader>
-      <CardContent className="p-2">
-        <ChartContainer config={chartConfig} className="h-[200px] w-full">{!isLoading ?
+      <CardContent>
+        <ChartContainer config={chartConfig} className="h-[230px] w-full">{!isLoading ?
           <BarChart
             width={900}
             height={150}
@@ -35,25 +35,24 @@ const Mobile_Barusage = ({ mobileUsageCameraData, isLoading }: any) => {
             <YAxis
               dataKey={"duration"}
               tickLine={false}
-              tickMargin={4}
               axisLine={false}
-              tick={{ fontSize: 10 }}
+              label={{ value: "Duration", angle: -90, position: "insideLeft", offset: 4 }}
             />
-            <CartesianGrid vertical={false} />
             <XAxis
               dataKey={"camera_name"}
               tickLine={false}
-              tickMargin={4}
               axisLine={false}
-              tick={{ fontSize: 10 }}
+              tickMargin={2}
+              label={{ value: "Camera Name", position: "insideBottom", offset: 0 }}
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-            <Bar dataKey="duration" fill="#F92609" radius={6}>
+            <Bar dataKey="duration" fill="#F92609" radius={6} barSize={50}>
               <LabelList
                 position="top"
-                offset={4}
+                offset={2}
                 className="fill-foreground"
                 fontSize={10}
+
               />
             </Bar>
           </BarChart> : <div className="flex text-lg items-center justify-center h-full"><p>Loading...</p></div>}

@@ -22,8 +22,8 @@ import {
 } from "@/components/ui/chart"
 
 const chartConfig = {
-  intrusions: {
-    label: "Intrusions",
+  duration: {
+    label: "Duration",
     color: "#F92609",
   },
 } satisfies ChartConfig;
@@ -50,12 +50,12 @@ const Mobile_Lineusage = ({ mobileUasgeTrendData, isLoading }: any) => {
               dataKey={"time"}
               tickLine={false}
               axisLine={false}
-              tickMargin={8}
+              tickMargin={2}
               label={{ value: "Hours", position: "insideBottom", offset: -5 }}
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <Line
-              dataKey={"time"}
+              dataKey={"duration"}
               type="natural"
               stroke="#F92609"
               strokeWidth={2}
