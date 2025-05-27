@@ -2,7 +2,6 @@ import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -26,22 +25,25 @@ const chartConfig = {
 const EntryExitTreandLineChart =
   ({ trendData }: any) => {
     return (
-      <Card className="flex flex-col w-full border-[#F92609]">
+      <Card className="flex flex-col h-[330px] w-full border-[#F92609] px-2">
         <CardHeader>
-          <CardTitle className="text-center text-[#F92609]">
+          <CardTitle className="text-center text-[#F92609] ">
             Entry & Exit Trend
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <ChartContainer config={chartConfig} className="h-[200px] w-full">
+          <ChartContainer config={chartConfig} className="h-[240px] w-full">
             <LineChart data={trendData}>
               <CartesianGrid vertical={false} />
-              <YAxis tickLine={false} axisLine={false} />
+              <YAxis tickLine={false} axisLine={false} tickMargin={4} label={{ value: "Entry/Exit Count", angle: -90, position: "insideLeft", offset: 3 }}
+              />
               <XAxis
                 dataKey="time"
                 tickLine={false}
                 axisLine={false}
-                tickMargin={8}
+                tickMargin={3}
+                label={{ value: "Hours", position: "insideBottom", offset: -5, }}
+
               />
               <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
               <Line
@@ -63,9 +65,6 @@ const EntryExitTreandLineChart =
             </LineChart>
           </ChartContainer>
         </CardContent>
-        <CardFooter className="flex-col gap-2 text-sm">
-          <p className="font-semibold">Total Entry & Exit</p>
-        </CardFooter>
       </Card>
     )
   }

@@ -43,7 +43,7 @@ const CameraTemperingPieChart = ({ cameraWiseTepmering, isLoading }: any) => {
   }, {} as ChartConfig);
 
   return (
-    <Card className="w-full h-[310px] p-2 border-[#F92609]">
+    <Card className="w-full h-[280px] p-2 border-[#F92609]">
       <CardHeader>
         <CardTitle className="text-center text-[#F92609]">
           Camerawise Total Tampering

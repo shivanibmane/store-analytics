@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Header from "../Header";
 import IntrusionAnalysisBarChart from "./IntrusionAnalysisBarChart";
 import IntrusionAnalysisLineChart from "./IntrusionAnalysisLineChart";
 import IntrusionMaxCameraCountCard from "./InstrsionMaxCameraCountCard";
 import { toast } from "sonner";
+import AnalysisHeading from "../Analysis/AnalysisHeading";
 
 const IntrusionAnalysis = () => {
   const [cameraWiseIntrusions, setCameraWiseIntrusions] = useState(null);
@@ -49,17 +49,15 @@ const IntrusionAnalysis = () => {
 
   return (
     <div className="w-full">
-      <Header title="Intrusion Analysis" />
-      <div className="px-4 py-3">
-        <div className="flex flex-col xl:flex-row mb-4 gap-3">
-          <IntrusionAnalysisBarChart
-            cameraWiseIntrusions={cameraWiseIntrusions}
-            isLoading={isLoading}
-          />
-          <IntrusionMaxCameraCountCard maxIntrusionCamera={maxIntrusionCamera} isLoading={isLoading} />
-        </div>
-        <IntrusionAnalysisLineChart intrusionTrend={intrusionTrend} isLoading={isLoading} />
+      <AnalysisHeading title="Intrusion Analysis" />
+      <div className="flex flex-col xl:flex-row mb-4 gap-3">
+        <IntrusionAnalysisBarChart
+          cameraWiseIntrusions={cameraWiseIntrusions}
+          isLoading={isLoading}
+        />
+        <IntrusionMaxCameraCountCard maxIntrusionCamera={maxIntrusionCamera} isLoading={isLoading} />
       </div>
+      <IntrusionAnalysisLineChart intrusionTrend={intrusionTrend} isLoading={isLoading} />
     </div>
   );
 };

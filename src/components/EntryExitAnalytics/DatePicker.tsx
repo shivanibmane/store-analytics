@@ -21,7 +21,7 @@ const DatePicker = ({ title }: any) => {
         <Button
           variant={"outline"}
           className={cn(
-            "w-[240px] justify-between text-left font-normal border border-[#F92609]",
+            "sm:w-[240px] justify-between text-left font-normal border border-[#F92609]",
             !date && "text-[#F92609]",
           )}
         >

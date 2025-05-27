@@ -1,8 +1,8 @@
 import Mobile_Barusage from './Mobile_Barusage'
 import Mobile_Lineusage from './Mobile_Lineusage'
-import Header from '../Header'
 import { toast } from 'sonner';
 import { useEffect, useState } from 'react';
+import AnalysisHeading from '../Analysis/AnalysisHeading';
 
 const Mobile_usage = () => {
   const [mobileUsageCameraData, setMobileUsageCameraData] = useState(null);
@@ -42,8 +42,8 @@ const Mobile_usage = () => {
 
   return (
     <div className="w-full">
-      <Header title="Mobile Usage" />
-      <div className="flex flex-col justify-center items-center gap-4 w-full p-2">
+      <AnalysisHeading title="Mobile Usage" />
+      <div className="flex flex-col justify-center items-center gap-4 w-full ">
         <Mobile_Barusage mobileUsageCameraData={mobileUsageCameraData} isLoading={isLoading} />
         <Mobile_Lineusage mobileUasgeTrendData={mobileUasgeTrendData} isLoading={isLoading} />
       </div>
