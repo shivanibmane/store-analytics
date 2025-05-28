@@ -4,19 +4,8 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "../ui/popover";
-import { Checkbox } from "../ui/checkbox";
+import ModulesSelection from "./ModulesSelection";
 
-const modulesList = [
-  "Intrusion",
-  "Entry Exit",
-  "Employee Unavailability",
-  "Occupancy Monitoring", "Mobile Usage", "Camera Tempering"
-];
 
 const CameraManagement = () => {
   const [formData, setFormData] = useState({
@@ -25,28 +14,15 @@ const CameraManagement = () => {
     cameraName: '',
     modules: [] as string[],
   });
-
   const [loading, setLoading] = useState(false);
 
   const handleChange = (event: any) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleModuleChange = (module: string) => {
-    setFormData((prev) => {
-      const alreadySelected = prev.modules.includes(module);
-      const updatedModules = alreadySelected
-        ? prev.modules.filter((m) => m !== module)
-        : [...prev.modules, module];
-
-      return { ...prev, modules: updatedModules };
-    });
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
     try {
       // Create payload matching backend
       const payload = {
@@ -139,33 +115,7 @@ const CameraManagement = () => {
             </div>
 
             {/* Modules Selection */}
-            <div>
-              <Label htmlFor="modules" style={{ color: '#F92609' }} className="mb-2">Modules</Label>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button variant="outline" className="w-full border justify-start text-left overflow-x-auto whitespace-nowrap no-scrollbar">
-                    {formData.modules.length > 0
-                      ? formData.modules.join(", ")
-                      : "None"}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-[300px] sm:w-[400px] lg:w-[450px] p-4">
-                  {modulesList.map((module) => (
-                    <div key={module} className="flex items-center space-x-2 py-1">
-                      <Checkbox
-                        id={module}
-                        checked={formData.modules.includes(module)}
-                        onCheckedChange={() => handleModuleChange(module)}
-                        className="data-[state=checked]:bg-[#F92609] data-[state=checked]:border-[#F92609]"
-                      />
-                      <label htmlFor={module} className="text-sm cursor-pointer">
-                        {module}
-                      </label>
-                    </div>
-                  ))}
-                </PopoverContent>
-              </Popover>
-            </div>
+            <ModulesSelection formData={formData} setFormData={setFormData} />
 
             {/* Submit Button */}
             <Button type="submit" className="w-full" disabled={loading}>
