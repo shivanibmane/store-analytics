@@ -1,6 +1,7 @@
 import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "../Header";
+import path from "path";
 
 const analyticsPages = [
   { name: "Entry/Exit Analytics", path: "entry-exit-analytics" },
@@ -9,6 +10,7 @@ const analyticsPages = [
   { name: "Occupancy Monitoring", path: "occupancy-monitoring" },
   { name: "Mobile Usage", path: "mobile-usage" },
   { name: "Camera Tampering", path: "camera-tampering" },
+  {name: "Billing Counter", path: "billing-counter"},
 ];
 
 const Analysis = () => {

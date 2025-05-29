@@ -13,6 +13,7 @@ import MobileUsage from "./components/MobileUsage/Mobile_usage";
 import CameraManagement from "./components/CameraManagement/CameraManagement";
 import OccupancyMonitoring from "./components/OccupancyMonitoring/OccupancyMonitoring";
 import CameraTempering from "./components/CameraTempering/CameraTempering";
+import BillingCounter from "./components/BillingCounter/BillingCounter";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="occupancy-monitoring" element={<OccupancyMonitoring />} />
             <Route path="mobile-usage" element={<MobileUsage />} />
             <Route path="camera-tampering" element={<CameraTempering />} />
+            <Route path="billing-counter" element={<BillingCounter/>}/>
           </Route>
         </Route>
       </Routes>
