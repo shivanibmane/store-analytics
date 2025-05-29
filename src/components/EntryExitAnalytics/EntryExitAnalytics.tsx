@@ -6,7 +6,7 @@ import EntryExitTreandLineChart from "./EntryExitTreandLineChart";
 import EntryExitDetailCard from "./EntryExitDetailCard";
 import EntryExitDountChart from "./EntryExitDountChart";
 import AnalyticsHeading from "../Analysis/AnalysisHeading";
-
+import { toast } from "sonner";
 const EntryExitAnalytics = () => {
   const [peakData, setPeakData]: any = useState(null);
   const [trendData, setTrendData]: any = useState([]);
@@ -20,6 +20,12 @@ const EntryExitAnalytics = () => {
           fetch("http://127.0.0.1:8000/entry_exit_trend"),
           fetch("http://127.0.0.1:8000/peak_entry_exit"),
         ]);
+        if(totalRes && trendRes && peakRes){
+          toast.success("Data loaded successfully");
+        }
+        else{
+             toast.warning("Data Not Found");
+        }
         const totalData = await totalRes.json();
         const trend = await trendRes.json();
         const peak = await peakRes.json();

@@ -24,6 +24,13 @@ const UnavailableEmployee: React.FC = () => {
           throw new Error("One or more requests failed");
         }
 
+        if(barRes && cardRes && trendRes){
+          toast.success("Data loaded successfully");
+        }
+        else{
+             toast.warning("Data Not Found");
+        }
+
         const [barJson, cardJson, trendJson] = await Promise.all([
           barRes.json(),
           cardRes.json(),

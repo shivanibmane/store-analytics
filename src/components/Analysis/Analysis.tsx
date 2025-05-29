@@ -4,7 +4,7 @@ import Header from "../Header";
 
 const analyticsPages = [
   { name: "Entry/Exit Analytics", path: "entry-exit-analytics" },
-  { name: "Unavailable Employee", path: "unavilable-employee" },
+  { name: "Unavailable Employee", path: "unavailable-employee" },
   { name: "Intrusion Analysis", path: "intrusion-analysis" },
   { name: "Occupancy Monitoring", path: "occupancy-monitoring" },
   { name: "Mobile Usage", path: "mobile-usage" },
