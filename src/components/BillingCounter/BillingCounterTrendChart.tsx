@@ -1,14 +1,11 @@
 
 "use client"
 
-import { TrendingUp } from "lucide-react"
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
+import { CartesianGrid, Label, Line, LineChart, XAxis, YAxis } from "recharts"
 
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -18,69 +15,81 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-]
+import LineChartSkeletonLoader from "../ChartSkeletonLoaders/LineChartSkeletonLoader"
+// const chartData = [
+//   { hour: "January", count: 186 },
+//   { hour: "February", count: 305 },
+//   { hour: "March", count: 237 },
+//   { hour: "April", count: 73 },
+//   { hour: "May", count: 209 },
+//   { hour: "June", count: 214 },
+// ]
 
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(var(--chart-1))",
+    color: "#F92609",
   },
 } satisfies ChartConfig
 
-export function BillingCounterTrendChart() {
+export function BillingCounterTrendChart({billingTrend,isLoading}:any) {
   return (
-    <Card>
+    <Card className="flex flex-col w-full border-[#F92609]">
       <CardHeader>
-        <CardTitle>Line Chart</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle className="text-center text-[#F92609]">Hourly Billings Trend Chart</CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig}>
-          <LineChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Line
-              dataKey="desktop"
-              type="natural"
-              stroke="var(--color-desktop)"
-              strokeWidth={2}
-              dot={false}
-            />
-          </LineChart>
-        </ChartContainer>
+        {isLoading ? <LineChartSkeletonLoader/> :
+          <ChartContainer config={chartConfig} className="h-[200px] w-full pr-4 overflow-visible">
+            {Array.isArray(billingTrend) && billingTrend.length >0 ?
+              <LineChart
+                accessibilityLayer
+                data={billingTrend}
+                margin={{
+                  top:10,
+                  left: 12,
+                  right: 40,
+                  bottom:30
+                }}
+              >
+                <CartesianGrid vertical={false} />
+                <YAxis tickLine={false} axisLine={false}>
+                  <Label
+                    value="Count"
+                    angle={-90}
+                    position="insideLeft"
+                    style={{ textAnchor: "middle", fontSize: 12 }}
+                  />
+                </YAxis>
+                <XAxis
+                  dataKey={"time"}
+                  tickLine={false}
+                  axisLine={false}
+                  tickMargin={8}>
+                    <Label
+                    value="Time"
+                    position="insideBottom"
+                    offset={-20}
+                    style={{ textAnchor: "middle", fontSize: 12 }}
+                  />
+                  </XAxis>
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent hideLabel />}
+                  />
+                  <Line
+                    dataKey={"count"}
+                    type="natural"
+                    stroke="#F92609"
+                    strokeWidth={2}
+                    dot={{ fill: "#F92609" }}
+                    activeDot={{ r: 5 }}
+                  />
+              </LineChart> : <div className="flex items-center justify-center h-full">
+                <p className="text-sm">Data Not Found</p></div>}
+          </ChartContainer>
+        }
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
-        </div>
-      </CardFooter>
     </Card>
   )
 }
