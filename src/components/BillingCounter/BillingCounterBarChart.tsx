@@ -16,15 +16,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 import BarChartSkeletonLoader from "../ChartSkeletonLoaders/BarChartSkeletonLoader"
-const chartData = [
-  { camera: "Camera A", count: 41 },
-  { camera: "Camera B", count: 35 },
-  { camera: "Camera C", count: 33 },
-  { camera: "Camera D", count: 40 },
-  { camera: "Camera E", count: 29 },
-  { camera: "Camera F", count: 24 },
-]
-
 const chartConfig = {
   count: {
     label: "count",
@@ -69,6 +60,7 @@ export function BillingCounterBarChart({cameraWiseBilling,isLoading}:any) {
                     tick={{ fontSize: 12 }}
                     axisLine={false}
                     tickLine={false}
+                    allowDecimals={false}
                   >
                         <Label
                         value="Count"
@@ -81,7 +73,7 @@ export function BillingCounterBarChart({cameraWiseBilling,isLoading}:any) {
                   cursor={false}
                   content={<ChartTooltipContent hideLabel />}
                 />
-                <Bar dataKey="count" fill="#F92609" radius={6} barSize={80} />
+                <Bar dataKey="count" fill="#F92609" radius={6} />
               </BarChart>): <div className="flex items-center justify-center h-full">
               <p className="text-sm">Data Not Found</p></div>}
           </ChartContainer>

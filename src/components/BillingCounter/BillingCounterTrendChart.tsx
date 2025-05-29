@@ -16,15 +16,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 import LineChartSkeletonLoader from "../ChartSkeletonLoaders/LineChartSkeletonLoader"
-// const chartData = [
-//   { hour: "January", count: 186 },
-//   { hour: "February", count: 305 },
-//   { hour: "March", count: 237 },
-//   { hour: "April", count: 73 },
-//   { hour: "May", count: 209 },
-//   { hour: "June", count: 214 },
-// ]
-
 const chartConfig = {
   desktop: {
     label: "Desktop",
@@ -53,7 +44,7 @@ export function BillingCounterTrendChart({billingTrend,isLoading}:any) {
                 }}
               >
                 <CartesianGrid vertical={false} />
-                <YAxis tickLine={false} axisLine={false}>
+                <YAxis tickLine={false} axisLine={false} allowDecimals={false}>
                   <Label
                     value="Count"
                     angle={-90}
