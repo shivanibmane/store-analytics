@@ -32,7 +32,7 @@ const chartConfig: ChartConfig = {
   },
 };
 
-const UnavailableEmployeetrends: React.FC<{
+const Dwell_line: React.FC<{
   data: TrendPoints[];
   isLoading: boolean;
 }> = ({ data, isLoading }) => {
@@ -40,7 +40,7 @@ const UnavailableEmployeetrends: React.FC<{
     <Card className="flex flex-col w-full border-[#F92609]">
       <CardHeader>
         <CardTitle className="text-center text-[#F92609]">
-          Unavailable Employee Trend
+            Dwell Timing Trend
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -88,4 +88,4 @@ const UnavailableEmployeetrends: React.FC<{
   );
 };
 
-export default UnavailableEmployeetrends;
+export default Dwell_line;

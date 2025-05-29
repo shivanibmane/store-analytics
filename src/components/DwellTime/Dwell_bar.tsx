@@ -34,15 +34,15 @@ const chartConfig: ChartConfig = {
   },
 };
 
-const UnavailableEmployeeBar: React.FC<{
+const Dwell_bar: React.FC<{
   data: BarPoint[];
   isLoading: boolean;
 }> = ({ data, isLoading }) => {
   return (
-    <Card className="w-full md:w-full h-[270px] p-2 border-[#F92609]">
+    <Card className="w-full md:w-full h-[280px] p-2 border-[#F92609]">
       <CardHeader>
         <CardTitle className="text-center text-[#F92609] text-sm">
-          Unavailable Employees
+         Dwell Timing 
         </CardTitle>
       </CardHeader>
       <CardContent className="px-2">
@@ -50,7 +50,7 @@ const UnavailableEmployeeBar: React.FC<{
           {isLoading ? (
             <BarChartSkeletonLoader />
           ) : (
-            <BarChart width={400} height={150} data={data} margin={{ top: 10 }}>
+            <BarChart width={400} height={150} data={data}  margin={{ top: 10, bottom: 30 }}>
               <YAxis
                 dataKey={"duration"}
                 tickLine={false}
@@ -59,7 +59,7 @@ const UnavailableEmployeeBar: React.FC<{
                 tick={{ fontSize: 10 }}
               >
                 <Label
-                  value="Duration"
+                  value="Count"
                   angle={-90}
                   position="insideLeft"
                   style={{ textAnchor: "middle", fontSize: 12 }}
@@ -72,7 +72,14 @@ const UnavailableEmployeeBar: React.FC<{
                 tickMargin={4}
                 axisLine={false}
                 tick={{ fontSize: 10 }}
-              />
+              >
+              <Label
+                  value="Camera"
+                  position="insideBottom"
+                  offset={-5}
+                  style={{ textAnchor: "middle", fontSize: 12 }}
+                />
+                </XAxis>
               <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
               <Bar dataKey={"duration"} fill="#F92609" radius={6}>
                 <LabelList
@@ -90,4 +97,4 @@ const UnavailableEmployeeBar: React.FC<{
   );
 };
 
-export default UnavailableEmployeeBar;
+export default Dwell_bar;

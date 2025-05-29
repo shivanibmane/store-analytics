@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import AnalyticsHeading from "../Analysis/AnalysisHeading";
-import UnavailableEmployeeBar from "./UnavailableEmployeeBar";
-import UnavailableEmployeeCard from "./UnavailableEmployeeCard";
-import UnavailableEmployeeTrends from "./UnavailableEmployeetrends";
-import { toast } from 'sonner';
 
-const UnavailableEmployee: React.FC = () => {
+import { toast } from 'sonner';
+import Dwell_bar from "./Dwell_bar";
+import Dwell_Card from "./Dwell_Card";
+import Dwell_line from "./Dwell_line";
+
+const DwellCamera: React.FC = () => {
   const [barData, setBarData] = useState([]);
   const [cardData, setCardData] = useState(null);
   const [trendData, setTrendData] = useState([]);
@@ -15,9 +16,9 @@ const UnavailableEmployee: React.FC = () => {
     (async () => {
       try {
         const [barRes, cardRes, trendRes] = await Promise.all([
-          fetch("http://127.0.0.1:8000/camerawiseEmp_unavailability"),
-          fetch("http://127.0.0.1:8000/MostEmp_unavailability"),
-          fetch("http://127.0.0.1:8000/Emp_unavailabilityTrend"),
+          fetch("http://127.0.0.1:8000/CameraWisedwelltime"),
+          fetch("http://127.0.0.1:8000/MaxDwellTime"),
+          fetch("http://127.0.0.1:8000/DwellTimeTrend"),
         ]);
 
         if (!barRes.ok || !cardRes.ok || !trendRes.ok) {
@@ -47,14 +48,14 @@ const UnavailableEmployee: React.FC = () => {
 
   return (
     <div className="w-full">
-      <AnalyticsHeading title="Unavailable Employee Analysis" />
+      <AnalyticsHeading title=" Dwell Timing" />
       <div className="flex flex-col xl:flex-row mb-4 gap-3">
-        <UnavailableEmployeeBar data={barData} isLoading={isLoading} />
-        <UnavailableEmployeeCard data={cardData} isLoading={isLoading} />
+        <Dwell_bar data={barData} isLoading={isLoading} />
+        <Dwell_Card data={cardData} isLoading={isLoading} />
       </div>
-      <UnavailableEmployeeTrends data={trendData} isLoading={isLoading} />
+      <Dwell_line data={trendData} isLoading={isLoading} />
     </div>
   );
 };
 
-export default UnavailableEmployee;
+export default DwellCamera;

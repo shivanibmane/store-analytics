@@ -6,7 +6,7 @@ interface MostRes {
   count: number;
 }
 
-const UnavailableEmployeeCard: React.FC<{
+const Dwell_Card: React.FC<{
   data: MostRes | null;
   isLoading: boolean;
 }> = ({ data, isLoading }) => {
@@ -15,7 +15,7 @@ const UnavailableEmployeeCard: React.FC<{
   ) : (
     <div className="w-full xl:w-[300px] border border-[#F92609] rounded-lg p-6 flex flex-col items-center justify-center min-h-0">
       <h3 className="text-lg font-semibold mb-2 text-[#F92609] text-center">
-        Camera With Most Unavailable Employees
+        Camera With Max Dwell Timing
       </h3>
       <p className="">{data?.name || "N/A"}</p>
       <p className="text-2xl font-bold">{data?.count ?? "0"}</p>
@@ -23,4 +23,4 @@ const UnavailableEmployeeCard: React.FC<{
   );
 };
 
-export default UnavailableEmployeeCard;
+export default Dwell_Card;
