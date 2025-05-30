@@ -2,7 +2,7 @@ import { Skeleton } from "../ui/skeleton"
 
 const LineChartSkeletonLoader = () => {
   return (
-    <div className="h-[200px] w-full pr-4 flex flex-col justify-between relative">
+    <div className="h-[200px] w-full pr-4 flex flex-col justify-between relative overflow-hidden">
       {/* Y-axis labels */}
       <div className="absolute left-0 top-6 h-[150px] flex flex-col justify-between pl-2">
         {[...Array(3)].map((_, idx) => (
