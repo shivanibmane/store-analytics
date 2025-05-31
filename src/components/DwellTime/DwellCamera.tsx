@@ -8,7 +8,7 @@ import Dwell_line from "./Dwell_line";
 
 const DwellCamera: React.FC = () => {
   const [barData, setBarData] = useState([]);
-  const [cardData, setCardData] = useState(null);
+  const [cardData, setCardData]: any = useState(null);
   const [trendData, setTrendData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
