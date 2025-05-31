@@ -11,7 +11,7 @@ const AnalysisHeading = ({ title }: { title: string }) => {
         className="flex items-center gap-1 text-[#F92609] hover:underline border-[1px] border-[#F92609] rounded-full font-extralight cursor-pointer "
         onClick={() => navigate("/analysis")}
       >
-        <IoArrowBack />
+        <IoArrowBack  /> 
       </button>
       <h1 className="text-md font-semibold">{title}</h1>
     </div>

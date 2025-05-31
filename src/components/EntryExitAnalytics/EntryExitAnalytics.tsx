@@ -6,11 +6,12 @@ import EntryExitTreandLineChart from "./EntryExitTreandLineChart";
 import EntryExitDetailCard from "./EntryExitDetailCard";
 import EntryExitDountChart from "./EntryExitDountChart";
 import AnalyticsHeading from "../Analysis/AnalysisHeading";
-
+import { toast } from "sonner";
 const EntryExitAnalytics = () => {
   const [peakData, setPeakData]: any = useState(null);
   const [trendData, setTrendData]: any = useState([]);
   const [totalEntryExit, setTotalEntryExit]: any = useState(null);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const fetchAllData = async () => {
@@ -23,11 +24,28 @@ const EntryExitAnalytics = () => {
         const totalData = await totalRes.json();
         const trend = await trendRes.json();
         const peak = await peakRes.json();
+        console.log(totalData, trend, peak)
+
         setTotalEntryExit(totalData);
         setTrendData(trend);
         setPeakData(peak);
+        setIsLoading(false)
+
+        const isTotalDataValid = totalData && Object.keys(totalData).length > 0;
+        const isTredsDataValid = Array.isArray(trend) && trend.length > 0;
+        const isPeakDataValid = peak && Object.keys(peak).length > 0;
+        console.log(isTotalDataValid, isTredsDataValid, isPeakDataValid)
+
+        if (isTotalDataValid && isTredsDataValid && isPeakDataValid) {
+          toast.success("Data loaded successfully");
+        }
+        else {
+          toast.warning("Data Not Found");
+        }
+
       } catch (err) {
-        console.error("Failed to fetch:", err);
+        toast.error("Failed to load data. Please check your server or network")
+        setIsLoading(false)
       }
     };
     fetchAllData();
@@ -51,16 +69,16 @@ const EntryExitAnalytics = () => {
             </div>
             {/* <div className="grid grid-col-1 sm:grid-cols-1 xl:grid-cols-2  gap-3"> */}
             <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start lg:flex-row gap-3">
-              <EntryExitDetailCard title="Peak Hours" value={peakData?.peak_hour} />
-              <EntryExitDetailCard title="Peak Entry" value={peakData?.peak_entry} />
-              <EntryExitDetailCard title="Peak Exit" value={peakData?.peak_exit} /></div>
+              <EntryExitDetailCard title="Peak Hours" value={peakData?.peak_hour} isLoading={isLoading} />
+              <EntryExitDetailCard title="Peak Entry" value={peakData?.peak_entry} isLoading={isLoading} />
+              <EntryExitDetailCard title="Peak Exit" value={peakData?.peak_exit} isLoading={isLoading} /></div>
             {/* </div> */}
           </div>
-          <EntryExitDountChart totalEntryExit={totalEntryExit} />
+          <EntryExitDountChart totalEntryExit={totalEntryExit} isLoading={isLoading} />
         </div>
         <div className="grid grid-cols-1  gap-3 items-center mt-2 mx-auto ">
 
-          <EntryExitTreandLineChart trendData={trendData} />
+          <EntryExitTreandLineChart trendData={trendData} isLoading={isLoading} />
         </div>
       </div>
     </div >

@@ -11,6 +11,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
+import LineChartSkeletonLoader from "../ChartSkeletonLoaders/LineChartSkeletonLoader";
 
 const chartConfig = {
   entry: {
@@ -23,7 +24,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 const EntryExitTreandLineChart =
-  ({ trendData }: any) => {
+  ({ trendData, isLoading }: any) => {
     return (
       <Card className="flex flex-col h-[330px] w-full border-[#F92609] px-2">
         <CardHeader>
@@ -31,9 +32,9 @@ const EntryExitTreandLineChart =
             Entry & Exit Trend
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent>{isLoading ? <LineChartSkeletonLoader /> :
           <ChartContainer config={chartConfig} className="h-[240px] w-full">
-            <LineChart data={trendData}>
+            {trendData?.length > 0 ? <LineChart data={trendData}>
               <CartesianGrid vertical={false} />
               <YAxis tickLine={false} axisLine={false} tickMargin={4} label={{ value: "Entry/Exit Count", angle: -90, position: "insideLeft", offset: 3 }}
               />
@@ -62,8 +63,9 @@ const EntryExitTreandLineChart =
                 dot={{ fill: "#F92609" }}
                 activeDot={{ r: 5 }}
               />
-            </LineChart>
-          </ChartContainer>
+            </LineChart> : <div className="flex items-center justify-center h-full">
+              <p className="text-sm">Data Not Found</p></div>}
+          </ChartContainer>}
         </CardContent>
       </Card>
     )

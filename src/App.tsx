@@ -3,7 +3,6 @@ import Home from "./components/Home";
 import CityMap from "./components/Map/CityMap";
 import UserManagement from "./components/UserManagement/UserManagement";
 import { Toaster } from "sonner";
-
 import Analysis from "./components/Analysis/Analysis";
 // Analytics Components
 import EntryExitAnalytics from "./components/EntryExitAnalytics/EntryExitAnalytics";
@@ -15,6 +14,7 @@ import OccupancyMonitoring from "./components/OccupancyMonitoring/OccupancyMonit
 import CameraTempering from "./components/CameraTempering/CameraTempering";
 import BillingCounter from "./components/BillingCounter/BillingCounter";
 import StaffCustomers from "./components/StraffCustomers/StaffCustomers";
+import DwellCamera from "./components/DwellTime/DwellCamera";
 
 function App() {
   return (
@@ -27,13 +27,14 @@ function App() {
           {/* PageAnalysis acts as parent layout */}
           <Route path="analysis" element={<Analysis />}>
             <Route path="entry-exit-analytics" element={<EntryExitAnalytics />} />
-            <Route path="unavilable-employee" element={<UnavailableEmployee />} />
+            <Route path="unavailable-employee" element={<UnavailableEmployee />} />
             <Route path="intrusion-analysis" element={<IntrusionAnalysis />} />
             <Route path="occupancy-monitoring" element={<OccupancyMonitoring />} />
             <Route path="mobile-usage" element={<MobileUsage />} />
             <Route path="camera-tampering" element={<CameraTempering />} />
-            <Route path="billing-counter" element={<BillingCounter />} />
+            <Route path="dwell-timing" element={<DwellCamera />} />
             <Route path="staff-customers" element={<StaffCustomers />} />
+            <Route path="billing-counter" element={<BillingCounter />} />
           </Route>
         </Route>
       </Routes>
