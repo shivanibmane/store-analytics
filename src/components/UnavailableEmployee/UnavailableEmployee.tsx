@@ -7,7 +7,7 @@ import { toast } from 'sonner';
 
 const UnavailableEmployee: React.FC = () => {
   const [barData, setBarData] = useState([]);
-  const [cardData, setCardData] = useState(null);
+  const [cardData, setCardData]: any = useState(null);
   const [trendData, setTrendData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,14 +23,6 @@ const UnavailableEmployee: React.FC = () => {
         if (!barRes.ok || !cardRes.ok || !trendRes.ok) {
           throw new Error("One or more requests failed");
         }
-
-        if(barRes && cardRes && trendRes){
-          toast.success("Data loaded successfully");
-        }
-        else{
-             toast.warning("Data Not Found");
-        }
-
         const [barJson, cardJson, trendJson] = await Promise.all([
           barRes.json(),
           cardRes.json(),
@@ -39,13 +31,25 @@ const UnavailableEmployee: React.FC = () => {
 
         setBarData(barJson);
         setCardData({
-          name: cardJson.camera_name,
-          count: cardJson.duration,
+          name: cardJson?.camera_name,
+          count: cardJson?.duration,
         });
         setTrendData(trendJson);
+        console.log()
+
+        const isValidBarData = Array.isArray(barJson) && barJson.length > 0
+        const isValidCardrData = cardJson && Object.keys(cardJson).length > 0
+        const isValidTrendData = Array.isArray(trendJson) && trendJson.length > 0
+        console.log(isValidBarData, isValidCardrData, isValidTrendData)
+
+        if (isValidBarData && isValidCardrData && isValidTrendData) {
+          toast.success("Data loaded successfully");
+        }
+        else {
+          toast.warning("Data Not Found");
+        }
       } catch (e) {
-        toast.error("Failed to fetch Unavailable Employee data.");
-        console.error("Fetch error:", e);
+        toast.error("Failed to load data. Please check you server or network");
       } finally {
         setIsLoading(false);
       }

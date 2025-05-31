@@ -25,11 +25,11 @@ const DwellCamera: React.FC = () => {
           throw new Error("One or more requests failed");
         }
 
-        if(barRes && cardRes && trendRes){
+        if (barRes && cardRes && trendRes) {
           toast.success("Data loaded successfully");
         }
-        else{
-             toast.warning("Data Not Found");
+        else {
+          toast.warning("Data Not Found");
         }
 
         const [barJson, cardJson, trendJson] = await Promise.all([
@@ -45,7 +45,7 @@ const DwellCamera: React.FC = () => {
         });
         setTrendData(trendJson);
       } catch (e) {
-        toast.error("Failed to fetch Unavailable Employee data.");
+        toast.error("Failed to load the data. Please check your server or network.");
         console.error("Fetch error:", e);
       } finally {
         setIsLoading(false);
@@ -55,7 +55,7 @@ const DwellCamera: React.FC = () => {
 
   return (
     <div className="w-full">
-      <AnalyticsHeading title=" Dwell Timing" />
+      <AnalyticsHeading title="Dwell Timing" />
       <div className="flex flex-col xl:flex-row mb-4 gap-3">
         <Dwell_bar data={barData} isLoading={isLoading} />
         <Dwell_Card data={cardData} isLoading={isLoading} />

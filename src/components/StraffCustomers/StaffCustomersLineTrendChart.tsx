@@ -2,7 +2,6 @@ import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 import {
   Card,
   CardContent,
-  CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 import {
@@ -14,29 +13,27 @@ import {
 import LineChartSkeletonLoader from "../ChartSkeletonLoaders/LineChartSkeletonLoader";
 
 const chartConfig = {
-  entry: {
-    label: "Entry",
+  "staff_count": {
+    label: "Staff",
     color: "#FFD14F ",
   },
-  exit: {
-    label: "Exit",
+  "customer_count": {
+    label: "Customers",
     color: "#F92609",
   },
 } satisfies ChartConfig;
-const EntryExitTreandLineChart =
-  ({ trendData, isLoading }: any) => {
+const StaffCustomersLineTrendChart =
+  ({ staffCustomersTrend, isLoading }: any) => {
     return (
-      <Card className="flex flex-col h-[330px] w-full border-[#F92609] px-2">
-        <CardHeader>
-          <CardTitle className="text-center text-[#F92609] ">
-            Entry & Exit Trend
-          </CardTitle>
-        </CardHeader>
-        <CardContent>{isLoading ? <LineChartSkeletonLoader /> :
-          <ChartContainer config={chartConfig} className="h-[240px] w-full">
-            {trendData?.length > 0 ? <LineChart data={trendData}>
+      <Card className="flex flex-col h-[295px] w-full border-[#F92609] px-2">
+        <CardTitle className="text-center text-[#F92609]  ">
+          Staff & Customers Trend
+        </CardTitle>
+        <CardContent>
+          {isLoading ? <LineChartSkeletonLoader /> : <ChartContainer config={chartConfig} className="h-[220px] w-full">
+            {staffCustomersTrend?.length > 0 ? <LineChart data={staffCustomersTrend}>
               <CartesianGrid vertical={false} />
-              <YAxis tickLine={false} axisLine={false} tickMargin={4} label={{ value: "Entry/Exit Count", angle: -90, position: "insideLeft", offset: 3 }}
+              <YAxis tickLine={false} allowDecimals={false} axisLine={false} tickMargin={4} label={{ value: "Count", angle: -90, position: "insideLeft", offset: 3 }}
               />
               <XAxis
                 dataKey="time"
@@ -44,11 +41,10 @@ const EntryExitTreandLineChart =
                 axisLine={false}
                 tickMargin={3}
                 label={{ value: "Hours", position: "insideBottom", offset: -5, }}
-
               />
               <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
               <Line
-                dataKey="entry"
+                dataKey="staff_count"
                 type="natural"
                 stroke="#FFD14F"
                 strokeWidth={2}
@@ -56,7 +52,7 @@ const EntryExitTreandLineChart =
                 activeDot={{ r: 5 }}
               />
               <Line
-                dataKey="exit"
+                dataKey="customer_count"
                 type="natural"
                 stroke="#F92609"
                 strokeWidth={2}
@@ -64,10 +60,10 @@ const EntryExitTreandLineChart =
                 activeDot={{ r: 5 }}
               />
             </LineChart> : <div className="flex items-center justify-center h-full">
-              <p className="text-sm">Data Not Found</p></div>}
+              <p className="text-lg">Data Not Found</p></div>}
           </ChartContainer>}
         </CardContent>
       </Card>
     )
   }
-export default EntryExitTreandLineChart
+export default StaffCustomersLineTrendChart

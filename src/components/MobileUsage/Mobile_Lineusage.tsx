@@ -38,7 +38,7 @@ const Mobile_Lineusage = ({ mobileUasgeTrendData, isLoading }: any) => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[220px] w-full p-2">
+        <ChartContainer config={chartConfig} className="h-[200px] w-full p-2">
           {!isLoading ? (
             <LineChart data={mobileUasgeTrendData}>
               <CartesianGrid vertical={false} />

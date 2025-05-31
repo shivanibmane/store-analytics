@@ -44,11 +44,11 @@ const UnavailableEmployeetrends: React.FC<{
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[200px] w-full pr-4">
-          {isLoading ? (
-            <LineChartSkeletonLoader />
-          ) : (
-            <LineChart data={data}>
+        {isLoading ? (
+          <LineChartSkeletonLoader />
+        ) :
+          <ChartContainer config={chartConfig} className="h-[200px] w-full pr-4">
+            {data.length > 0 ? <LineChart data={data}>
               <CartesianGrid vertical={false} />
               <YAxis tickLine={false} axisLine={false}>
                 <Label
@@ -80,9 +80,9 @@ const UnavailableEmployeetrends: React.FC<{
                 dot={{ fill: "#F92609" }}
                 activeDot={{ r: 5 }}
               />
-            </LineChart>
-          )}
-        </ChartContainer>
+            </LineChart> : <div className="flex items-center justify-center h-full">
+              <p className="text-sm">Data Not Found</p></div>}
+          </ChartContainer>}
       </CardContent>
     </Card>
   );

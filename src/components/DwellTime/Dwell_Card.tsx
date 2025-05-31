@@ -17,8 +17,8 @@ const Dwell_Card: React.FC<{
       <h3 className="text-lg font-semibold mb-2 text-[#F92609] text-center">
         Camera With Max Dwell Timing
       </h3>
-      <p className="">{data?.name || "N/A"}</p>
-      <p className="text-2xl font-bold">{data?.count ?? "0"}</p>
+      <p className="">{data?.name ? data.name : <span className="text-sm">Data Not Found</span>}</p>
+      <p className="text-2xl font-bold">{data?.count ? data.count : ""}</p>
     </div>
   );
 };

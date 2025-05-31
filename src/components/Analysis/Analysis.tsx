@@ -9,7 +9,9 @@ const analyticsPages = [
   { name: "Occupancy Monitoring", path: "occupancy-monitoring" },
   { name: "Mobile Usage", path: "mobile-usage" },
   { name: "Camera Tampering", path: "camera-tampering" },
-  {name: "Dwell Timing", path:"Dwell-timing"},
+  { name: "Billing Counter", path: "billing-counter" },
+  { name: "Staff/Customers", path: "staff-customers" },
+  { name: "Dwell Timing", path: "dwell-timing" },
 ];
 
 const Analysis = () => {
