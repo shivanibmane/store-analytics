@@ -12,6 +12,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import DoughnutChartSkeleton from "../ChartSkeletonLoaders/DountChartSekeletonLoader";
 
 
 
@@ -50,18 +51,21 @@ const CameraTemperingPieChart = ({ cameraWiseTepmering, isLoading }: any) => {
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
+        {isLoading ? 
+          <DoughnutChartSkeleton/> :
         <ChartContainer
           config={chartConfig}
           className="w-full h-[200px] pr-4"
         >
-          {!isLoading ? <PieChart >
+          {formattedData?.length ? <PieChart >
             <ChartTooltip
               content={<ChartTooltipContent nameKey="camera" />}
             />
             <Pie data={formattedData} dataKey="total" outerRadius={100}  >
             </Pie>
-          </PieChart> : <div className=" text-lg flex items-center justify-center"><p>Loading...</p></div>}
-        </ChartContainer>
+          </PieChart> : <div className="flex items-center justify-center h-full">
+            <p className="text-sm">Data Not Found</p></div>}
+        </ChartContainer>}
       </CardContent>
     </Card >
   );
