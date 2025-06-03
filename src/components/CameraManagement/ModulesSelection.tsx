@@ -13,7 +13,13 @@ const modulesList = [
   "Intrusion",
   "Entry Exit",
   "Employee Unavailability",
-  "Occupancy Monitoring", "Mobile Usage", "Camera Tempering"
+  "Occupancy Monitoring",
+  "Mobile Usage",
+  "Camera Tempering",
+  "Customer Staff Ratio",
+  "Billing Counter",
+  "Dwell Time"
+
 ];
 const ModulesSelection = ({ formData, setFormData }: any) => {
 
@@ -62,7 +68,7 @@ const ModulesSelection = ({ formData, setFormData }: any) => {
           </Button>
 
         </PopoverTrigger>
-        <PopoverContent className="w-[300px] sm:w-[400px] lg:w-[450px] p-4" side="bottom"
+        <PopoverContent className="w-[300px] sm:w-[400px] lg:w-[450px] h-[150px] px-4 overflow-y-scroll no-scrollbar" side="bottom"
         >
           {modulesList.map((module) => (
             <div key={module} className="flex items-center space-x-2 py-1">
