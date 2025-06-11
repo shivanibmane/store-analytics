@@ -15,6 +15,7 @@ import CameraTempering from "./components/CameraTempering/CameraTempering";
 import BillingCounter from "./components/BillingCounter/BillingCounter";
 import StaffCustomers from "./components/StraffCustomers/StaffCustomers";
 import DwellCamera from "./components/DwellTime/DwellCamera";
+import FallSlipDetection from "./components/FallSlipDetection/FallSlipDetection";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="dwell-timing" element={<DwellCamera />} />
             <Route path="staff-customers" element={<StaffCustomers />} />
             <Route path="billing-counter" element={<BillingCounter />} />
+            <Route path="fall-slip-detection" element={<FallSlipDetection/>} />
           </Route>
         </Route>
       </Routes>
