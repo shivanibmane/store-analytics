@@ -17,17 +17,6 @@ import {
 } from "@/components/ui/chart"
 import LineChartSkeletonLoader from "../ChartSkeletonLoaders/LineChartSkeletonLoader"
 
-export const description = "A line chart"
-
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-]
-
 const chartConfig = {
   desktop: {
     label: "count",
@@ -88,7 +77,7 @@ export function FallSlipLineChart({fallTrend,isLoading}:any) {
                   dot={{ fill: "#F92609" }}
                   activeDot={{ r: 5 }}
               />
-            </LineChart>:<div className="items-center justify-center flex h-full">Data not found</div>}
+            </LineChart>:<div className="items-center justify-center flex h-full text-sm">Data not found</div>}
         </ChartContainer>}
       </CardContent>
     </Card>

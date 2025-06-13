@@ -71,7 +71,7 @@ export function FallSlipPieChart({cameraWiseFall,isLoading}:any) {
               dataKey="count" nameKey="camera" 
               outerRadius={100} 
             />
-          </PieChart> : <div className="flex items-center justify-center">Data not found</div>
+          </PieChart> : <div className="flex items-center justify-center h-full text-sm">Data not found</div>
           }
         </ChartContainer>
         }
