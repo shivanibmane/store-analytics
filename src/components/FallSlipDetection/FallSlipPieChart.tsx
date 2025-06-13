@@ -1,14 +1,11 @@
 
 "use client"
 
-import { TrendingUp } from "lucide-react"
 import { Pie, PieChart } from "recharts"
 
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -20,43 +17,35 @@ import {
 } from "@/components/ui/chart"
 import DoughnutChartSkeleton from "../ChartSkeletonLoaders/DountChartSekeletonLoader"
 
-export const description = "A simple pie chart"
+export function FallSlipPieChart({cameraWiseFall,isLoading}:any) {
 
-const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 90, fill: "var(--color-other)" },
-]
+  function generateRedShade(index:number,total:number){
+    if(total===1)
+    {
+      return "#F92609";
+    }
+    const lightness=90-(index*(60/total));
+    return `hsl(0,100%,${lightness}%)`
+  }
 
-const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  chrome: {
-    label: "Chrome",
-    color: "var(--chart-1)",
-  },
-  safari: {
-    label: "Safari",
-    color: "var(--chart-2)",
-  },
-  firefox: {
-    label: "Firefox",
-    color: "var(--chart-3)",
-  },
-  edge: {
-    label: "Edge",
-    color: "var(--chart-4)",
-  },
-  other: {
-    label: "Other",
-    color: "var(--chart-5)",
-  },
-} satisfies ChartConfig
+  const totalCamera=cameraWiseFall?.length;
 
-export function FallSlipPieChart({isLoading}:any) {
+  const formattedData=cameraWiseFall?.map((item:any,index:any)=>({
+    camera:item?.camera_name,
+    count:item?.count,
+    fill:generateRedShade(index,totalCamera)
+  }));
+
+  const chartConfig:ChartConfig=(formattedData || []).reduce((config:any,item:any)=>{
+    if(item.camera) {
+      config[item.camera]={
+        label:item.camera_name,
+        color:"#F92609",
+      }
+    }
+    return config;
+  },{} as ChartConfig);
+
   return (
     <Card className="w-full md:w-full h-[270px] p-2 border-[#F92609]">
       <CardHeader>
@@ -71,14 +60,21 @@ export function FallSlipPieChart({isLoading}:any) {
           config={chartConfig}
           className="w-full h-[200px]"
         >
+          {formattedData?.length ? 
           <PieChart>
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Pie data={chartData} dataKey="visitors" nameKey="browser" outerRadius={100} />
-          </PieChart>
-        </ChartContainer>}
+            <Pie 
+              data={formattedData} 
+              dataKey="count" nameKey="camera" 
+              outerRadius={100} 
+            />
+          </PieChart> : <div className="flex items-center justify-center">Data not found</div>
+          }
+        </ChartContainer>
+        }
       </CardContent>
     </Card>
   )
