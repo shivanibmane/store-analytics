@@ -13,6 +13,9 @@ import { Toaster } from "sonner";
 import OccupancyMaxCount from "./components/OccupancyMonitoring/OccupancyMaxCount";
 import OccupancyMonitoring from "./components/OccupancyMonitoring/OccupancyMonitoring";
 import CameraTempering from "./components/CameraTempering/CameraTempering";
+import BillingStaffAbsence from "./components/BillingStaffAbsence/BillingStaffAbsence"
+import Heatdata from "./components/HeatMap/Heatdata";
+import { HoverProvider } from "./hooks/HoverContext";
 function App() {
   return (
     <>
@@ -30,6 +33,8 @@ function App() {
           <Route path="Dwell-timing" element={<DwellCamera />} />
           <Route path="occupancy-monitoring" element={<OccupancyMonitoring/>}/>
           <Route path="camera-tampering" element={<CameraTempering/>}/>
+          <Route path="BillingStaffAbsence" element={<BillingStaffAbsence/>}/>
+          <Route path="HeatMap" element={<Heatdata/>}/>
         </Route>
       </Route>
     </Routes>

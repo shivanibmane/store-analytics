@@ -15,34 +15,36 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
-  ChartConfig,
   ChartContainer,
+  ChartConfig,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import BarChartSkeletonLoader from "../ChartSkeletonLoaders/BarChartSkeletonLoader";
 
-interface BarPoint {
+interface CameraBillingData {
   camera_name: string;
   duration: number;
 }
 
+interface CameraWiseBillingChartProps {
+  data: CameraBillingData[];
+  isLoading: boolean;
+}
+
 const chartConfig: ChartConfig = {
   duration: {
-    label: "Unavailable Employee",
+    label: "Billing Duration",
     color: "#F92609",
   },
 };
 
-const Dwell_bar: React.FC<{
-  data: BarPoint[];
-  isLoading: boolean;
-}> = ({ data, isLoading }) => {
+const BillingStaffBar: React.FC<CameraWiseBillingChartProps> = ({ data, isLoading }) => {
   return (
     <Card className="w-full md:w-full h-[280px] p-2 border-[#F92609]">
       <CardHeader>
         <CardTitle className="text-center text-[#F92609] text-sm">
-         Dwell Timing 
+          Camera-Wise Billing Duration
         </CardTitle>
       </CardHeader>
       <CardContent className="px-2">
@@ -50,7 +52,7 @@ const Dwell_bar: React.FC<{
           {isLoading ? (
             <BarChartSkeletonLoader />
           ) : (
-            <BarChart width={400} height={150} data={data}  margin={{ top: 10, bottom: 30 }}>
+            <BarChart width={400} height={150} data={data} margin={{ top: 10, bottom: 30 }}>
               <YAxis
                 dataKey={"duration"}
                 tick={{ fontSize: 10 }}
@@ -58,8 +60,8 @@ const Dwell_bar: React.FC<{
                 tickLine={false}
               >
                 <Label
-                  value="Count"
-                   angle={-90}
+                  value="Duration"
+                  angle={-90}
                   position="insideLeft"
                   style={{ textAnchor: "middle", fontSize: 12 }}
                 />
@@ -72,16 +74,17 @@ const Dwell_bar: React.FC<{
                 axisLine={false}
                 tick={{ fontSize: 10 }}
               >
-              <Label
+                <Label
                   value="Camera"
                   position="insideBottom"
                   offset={-5}
                   style={{ textAnchor: "middle", fontSize: 12 }}
                 />
-                </XAxis>
+              </XAxis>
               <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
               <Bar dataKey={"duration"} fill="#F92609" radius={6}>
                 <LabelList
+                  dataKey="duration"
                   position="top"
                   offset={4}
                   className="fill-foreground"
@@ -96,4 +99,4 @@ const Dwell_bar: React.FC<{
   );
 };
 
-export default Dwell_bar;
+export default BillingStaffBar;
