@@ -1,4 +1,3 @@
-import React from 'react';
 
 const HeatMapSkeleton = () => {
   const rows = 2;

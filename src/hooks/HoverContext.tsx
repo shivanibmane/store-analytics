@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import { createContext, useState, useContext, ReactNode } from 'react';
 
 export interface RawDataPoint {
   camera_name: string;
@@ -13,7 +13,7 @@ interface HoverContextType {
 // Default values
 const defaultValue: HoverContextType = {
   hoveredData: { camera_name: 'Hover over a cell', customer_count: 0 },
-  setHoveredData: () => {},
+  setHoveredData: () => { },
 };
 
 const HoverContext = createContext<HoverContextType>(defaultValue);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import HeatMapChart from './HeatMap';
 import HeatCard from './HeatCard';
 import { toast } from 'sonner';
@@ -21,7 +21,7 @@ const Heatdata = () => {
         if (!res.ok) throw new Error("Failed to fetch");
         const mapJson: RawDataPoint[] = await res.json();
         console.log("the heat map data", mapJson);
-        setHeatMapData(mapJson); 
+        setHeatMapData(mapJson);
         toast.success("Heatmap data loaded successfully");
       } catch (error) {
         console.error("Fetch error:", error);
@@ -37,7 +37,7 @@ const Heatdata = () => {
       <AnalysisHeading title="CustomerStaff" />
       <div className="flex flex-col xl:flex-row gap-6 p-4 w-full">
         <div className="w-full xl:w-3/4">
-           {isLoading ? <HeatMapSkeleton /> : <HeatMapChart data={heatMapData} isLoading={isLoading} />}
+          {isLoading ? <HeatMapSkeleton /> : <HeatMapChart data={heatMapData} isLoading={isLoading} />}
         </div>
         <div className="w-full xl:w-1/4 flex justify-center">
           {isLoading ? <HeatCardSkeleton /> : <HeatCard />}

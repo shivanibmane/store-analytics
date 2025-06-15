@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import BillingLine from "./BillingLine";
 import AnalysisHeading from "../Analysis/AnalysisHeading";
 import BillingStaffBar from "./BillingStaffBar";
@@ -9,21 +9,17 @@ interface TrendPoints {
   duration: number;
 }
 
-interface BarDataPoint {
-  staff: string;
-  absentDays: number;
-}
 
 const BillingStaffAbsence = () => {
-  
-  const [barData, setBarData] = useState<BarDataPoint[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [TrendData,setTrendData]=useState<TrendPoints[]>([]);
 
-useEffect(() => {
+  const [barData, setBarData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [TrendData, setTrendData] = useState<TrendPoints[]>([]);
+
+  useEffect(() => {
     (async () => {
       try {
-        const [barRes,  trendRes] = await Promise.all([
+        const [barRes, trendRes] = await Promise.all([
           fetch("http://127.0.0.1:8000/CameraWiseBilling"),
           fetch("http://127.0.0.1:8000/BillingTrend"),
         ]);
@@ -32,23 +28,23 @@ useEffect(() => {
           throw new Error("One or more requests failed");
         }
 
-        if(barRes  && trendRes){
+        if (barRes && trendRes) {
           toast.success("Data loaded successfully");
         }
-        else{
-             toast.warning("Data Not Found");
+        else {
+          toast.warning("Data Not Found");
         }
 
-        const [barJson,  trendJson] = await Promise.all([
+        const [barJson, trendJson] = await Promise.all([
           barRes.json(),
           trendRes.json(),
         ]);
-       
+
         setBarData(barJson);
         setTrendData(trendJson);
 
-        console.log("the trend data",TrendData);
-        console.log("the bar data:",barData);
+        console.log("the trend data", TrendData);
+        console.log("the bar data:", barData);
       } catch (e) {
         toast.error("Failed to fetch Unavailable Employee data.");
         console.error("Fetch error:", e);
