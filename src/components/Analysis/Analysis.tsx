@@ -12,6 +12,7 @@ const analyticsPages = [
   { name: "Billing Counter", path: "billing-counter" },
   { name: "Staff/Customers", path: "staff-customers" },
   { name: "Dwell Timing", path: "dwell-timing" },
+  { name: "Fall/Slip Detection", path: "fall-slip-detection" }
 ];
 
 const Analysis = () => {
