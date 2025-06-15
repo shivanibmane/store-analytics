@@ -36,7 +36,7 @@ function App() {
             <Route path="dwell-timing" element={<DwellCamera />} />
             <Route path="staff-customers" element={<StaffCustomers />} />
             <Route path="billing-counter" element={<BillingCounter />} />
-            <Route path="fall-slip-detection" element={<FallSlipDetection/>} />
+            <Route path="fall-slip-detection" element={<FallSlipDetection />} />
           </Route>
         </Route>
       </Routes>
