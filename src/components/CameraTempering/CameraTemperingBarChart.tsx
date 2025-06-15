@@ -12,6 +12,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
+import BarChartSkeletonLoader from "../ChartSkeletonLoaders/BarChartSkeletonLoader";
 
 const transformChartData = (data: any[]) => {
   const grouped: { [key: string]: any } = {};
@@ -52,38 +53,43 @@ const CameraTemperingBarChart = ({ cameraTemperingTrend, isLoading }: any) => {
         <CardTitle className="text-center text-[#F92609]">Tempering Type Camerawise</CardTitle>
       </CardHeader>
       <CardContent>
+        {isLoading ? (
+          <BarChartSkeletonLoader/>
+        ) : (
         <ChartContainer config={chartConfig} className="h-[220px] w-full">
-          {!isLoading ? <BarChart accessibilityLayer data={transformedData} width={400}
-            height={200}
-          >
-            <CartesianGrid vertical={false} />
-            <YAxis tickLine={false} axisLine={false} >
-              <Label
-                value="Count"
-                angle={-90}
-                position="insideLeft"
-                style={{ textAnchor: "middle", fontSize: 12 }}
-              /></YAxis>
-            <XAxis
-              dataKey={"camera_name"}
-              tickLine={false}
-              axisLine={false}
-              tickMargin={5}
-            ><Label
-                value="Camera Name"
-                position="insideBottom"
-                offset={-5}
-                style={{ textAnchor: "middle", fontSize: 12, }}
-              /></XAxis>
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent indicator="dashed" />}
-            />
-            <Bar dataKey="camera_movement" fill="#F92609" radius={4} barSize={50} />
-            <Bar dataKey="occlusion" fill="#FFD14F" radius={4} barSize={50} />
-          </BarChart> : <div className="text-lg flex items-center justify-center"><p>Loading..</p></div>}
-
+          {Array.isArray(cameraTemperingTrend) && cameraTemperingTrend.length > 0 ? (
+            <BarChart accessibilityLayer data={transformedData} width={400}
+              height={200}
+            >
+              <CartesianGrid vertical={false} />
+              <YAxis tickLine={false} axisLine={false} >
+                <Label
+                  value="Count"
+                  angle={-90}
+                  position="insideLeft"
+                  style={{ textAnchor: "middle", fontSize: 12 }}
+                /></YAxis>
+              <XAxis
+                dataKey={"camera_name"}
+                tickLine={false}
+                axisLine={false}
+                tickMargin={5}
+              ><Label
+                  value="Camera Name"
+                  position="insideBottom"
+                  offset={-5}
+                  style={{ textAnchor: "middle", fontSize: 12, }}
+                /></XAxis>
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent indicator="dashed" />}
+              />
+              <Bar dataKey="camera_movement" fill="#F92609" radius={4} barSize={50} />
+              <Bar dataKey="occlusion" fill="#FFD14F" radius={4} barSize={50} />
+            </BarChart>) :  <div className="flex items-center justify-center h-full">
+            <p className="text-sm">Data Not Found</p></div>} 
         </ChartContainer>
+        )}
       </CardContent>
     </Card>
   )

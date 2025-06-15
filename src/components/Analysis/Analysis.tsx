@@ -9,10 +9,12 @@ const analyticsPages = [
   { name: "Occupancy Monitoring", path: "occupancy-monitoring" },
   { name: "Mobile Usage", path: "mobile-usage" },
   { name: "Camera Tampering", path: "camera-tampering" },
-  {name: "Dwell Timing", path:"Dwell-timing"},
-  {name: "Billing Staff Absence", path:"BillingStaffAbsence"},
-  {name: "HeatMap", path:"HeatMap"},
-
+  { name: "Billing Counter", path: "billing-counter" },
+  { name: "Staff/Customers", path: "staff-customers" },
+  { name: "Dwell Timing", path: "dwell-timing" },
+  { name: "Fall/Slip Detection", path: "fall-slip-detection" },
+  { name: "Billing Staff Absence", path: "BillingStaffAbsence" },
+  { name: "HeatMap", path: "HeatMap" },
 ];
 
 const Analysis = () => {

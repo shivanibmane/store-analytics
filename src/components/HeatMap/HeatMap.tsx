@@ -73,7 +73,7 @@ const HeatMapChart: React.FC<HeatMapProps> = ({ data, isLoading }) => {
   console.log('Heatmap text matrix:', text);
   console.log('Annotations:', annotations);
 
-  const handleHover = (event:any) => {
+  const handleHover = (event: any) => {
     const point = event.points?.[0];
     if (!point) return;
 

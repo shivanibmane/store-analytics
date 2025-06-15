@@ -17,14 +17,14 @@ const chartConfig = {
 
 const Mobile_Barusage = ({ mobileUsageCameraData, isLoading }: any) => {
   return (
-    <Card className="w-full md:w-full h-[310px] p-2 border-[#F92609]">
+    <Card className="w-full md:w-full h-[270px] p-2 border-[#F92609]">
       <CardHeader>
         <CardTitle className="text-center text-[#F92609] text-sm">
           Mobile Usage Camera
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[230px] w-full">
+        <ChartContainer config={chartConfig} className="h-[200px] w-full">
           {!isLoading ? (
             <BarChart
               width={900}

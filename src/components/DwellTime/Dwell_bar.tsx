@@ -29,7 +29,7 @@ interface BarPoint {
 
 const chartConfig: ChartConfig = {
   duration: {
-    label: "Unavailable Employee",
+    label: "Duration",
     color: "#F92609",
   },
 };
@@ -38,28 +38,29 @@ const Dwell_bar: React.FC<{
   data: BarPoint[];
   isLoading: boolean;
 }> = ({ data, isLoading }) => {
+  console.log(data)
   return (
     <Card className="w-full md:w-full h-[280px] p-2 border-[#F92609]">
       <CardHeader>
         <CardTitle className="text-center text-[#F92609] text-sm">
-         Dwell Timing 
+          Dwell Timing
         </CardTitle>
       </CardHeader>
       <CardContent className="px-2">
-        <ChartContainer config={chartConfig} className="h-[200px] w-full">
-          {isLoading ? (
-            <BarChartSkeletonLoader />
-          ) : (
-            <BarChart width={400} height={150} data={data}  margin={{ top: 10, bottom: 30 }}>
+        {isLoading ? (
+          <BarChartSkeletonLoader />
+        ) :
+          <ChartContainer config={chartConfig} className="h-[200px] w-full">
+            {data?.length > 0 ? <BarChart width={400} height={150} data={data} margin={{ top: 10, bottom: 30 }}>
               <YAxis
                 dataKey={"duration"}
                 tick={{ fontSize: 10 }}
-                axisLine={false}
-                tickLine={false}
+
+                allowDecimals={false}
               >
                 <Label
-                  value="Count"
-                   angle={-90}
+                  value="Duration"
+                  angle={-90}
                   position="insideLeft"
                   style={{ textAnchor: "middle", fontSize: 12 }}
                 />
@@ -72,13 +73,13 @@ const Dwell_bar: React.FC<{
                 axisLine={false}
                 tick={{ fontSize: 10 }}
               >
-              <Label
+                <Label
                   value="Camera"
                   position="insideBottom"
                   offset={-5}
                   style={{ textAnchor: "middle", fontSize: 12 }}
                 />
-                </XAxis>
+              </XAxis>
               <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
               <Bar dataKey={"duration"} fill="#F92609" radius={6}>
                 <LabelList
@@ -89,8 +90,9 @@ const Dwell_bar: React.FC<{
                 />
               </Bar>
             </BarChart>
-          )}
-        </ChartContainer>
+              : <div className="flex items-center justify-center h-full">
+                <p className="text-sm">Data Not Found</p></div>}
+          </ChartContainer>}
       </CardContent>
     </Card>
   );
