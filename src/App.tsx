@@ -12,6 +12,8 @@ import MobileUsage from "./components/MobileUsage/Mobile_usage";
 import CameraManagement from "./components/CameraManagement/CameraManagement";
 import OccupancyMonitoring from "./components/OccupancyMonitoring/OccupancyMonitoring";
 import CameraTempering from "./components/CameraTempering/CameraTempering";
+import BillingStaffAbsence from "./components/BillingStaffAbsence/BillingStaffAbsence"
+import Heatdata from "./components/HeatMap/Heatdata";
 import BillingCounter from "./components/BillingCounter/BillingCounter";
 import StaffCustomers from "./components/StraffCustomers/StaffCustomers";
 import DwellCamera from "./components/DwellTime/DwellCamera";
@@ -37,6 +39,8 @@ function App() {
             <Route path="staff-customers" element={<StaffCustomers />} />
             <Route path="billing-counter" element={<BillingCounter />} />
             <Route path="fall-slip-detection" element={<FallSlipDetection />} />
+            <Route path="BillingStaffAbsence" element={<BillingStaffAbsence />} />
+            <Route path="HeatMap" element={<Heatdata />} />
           </Route>
         </Route>
       </Routes>

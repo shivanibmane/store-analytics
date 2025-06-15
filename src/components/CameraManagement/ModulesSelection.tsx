@@ -18,7 +18,9 @@ const modulesList = [
   "Camera Tempering",
   "Customer Staff Ratio",
   "Billing Counter",
-  "Dwell Time"
+  "Dwell Time",
+  "Billing Staff Absence",
+  "Fall/Slip"
 
 ];
 const ModulesSelection = ({ formData, setFormData }: any) => {

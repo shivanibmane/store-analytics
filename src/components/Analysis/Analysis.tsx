@@ -12,7 +12,9 @@ const analyticsPages = [
   { name: "Billing Counter", path: "billing-counter" },
   { name: "Staff/Customers", path: "staff-customers" },
   { name: "Dwell Timing", path: "dwell-timing" },
-  { name: "Fall/Slip Detection", path: "fall-slip-detection" }
+  { name: "Fall/Slip Detection", path: "fall-slip-detection" },
+  { name: "Billing Staff Absence", path: "BillingStaffAbsence" },
+  { name: "HeatMap", path: "HeatMap" },
 ];
 
 const Analysis = () => {

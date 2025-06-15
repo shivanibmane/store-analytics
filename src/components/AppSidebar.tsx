@@ -23,6 +23,7 @@ const sidebarMenu = [
   { id: 2, name: "User Management", icon: <LuUsers />, path: "/user-management" },
   { id: 3, name: "Analysis", icon: <FaRegChartBar />, path: "/analysis" },
   { id: 4, name: "Camera Management", icon: <IoCameraOutline />, path: "/camera-management" },
+  
 ];
 
 const AppSidebar = () => {
